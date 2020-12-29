@@ -1,5 +1,6 @@
-# SmartBrain - v2
-Final project for ZTM course
+# Frontend MGVWATCH extranet - v1
+
+This is a frontend for the MGVWATCH extranet
 
 1. Clone this repo
 2. Run `npm install`
