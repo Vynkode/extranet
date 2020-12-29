@@ -1,0 +1,35 @@
+.notfocus:focus,
+.notfocus:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.8);
+  height: 45px;
+}
+
+.socials {
+  width: 100px;
+  padding: 10px 0 0 20px;
+  text-align: left;
+}
+
+.social-icon {
+  margin-right: 8px;
+}
+
+.social-icon:hover,
+.social-icon:focus {
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in;
+}
+.text {
+  color: #ffffff;
+  font-size: 11px;
+  text-align: right;
+  vertical-align: middle;
+  padding: 10px 10px 0 0;
+}

@@ -1,0 +1,11 @@
+.loading-container {
+  width: 100%;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+h5 {
+  color: white;
+}
