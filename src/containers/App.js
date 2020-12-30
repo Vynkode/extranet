@@ -11,12 +11,12 @@ import './App.css';
 library.add(faInbox, faTools, faReceipt, faCheck, faSpinner);
 
 const initialState = {
-  route: 'repairs',
+  route: 'signin',
   isSignedIn: false,
   user: {
     id: '',
     name: '',
-    email: 'comercial@chusezpeleta.com',
+    email: '',
     phone: '',
     street: '',
     postalCode: '',
