@@ -12,9 +12,10 @@ const RepairList = ({ user }) => {
   const [searchfield, setSearchfield] = useState('');
   const [filteredrepairs, setFilteredrepairs] = useState([]);
   const [filteroption, setFilteroption] = useState(1);
+  const [type, setType] = React.useState('workshop');
 
   const fetchRepairs = async () => {
-    const response = await fetch(`http://localhost:3000/repairs/${user.email}`, {
+    const response = await fetch(`https://extranet-backend.herokuapp.com/${user.email}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
@@ -43,6 +44,14 @@ const RepairList = ({ user }) => {
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);
     console.log(searchfield);
+  };
+
+  const handleType = (type) => {
+    if (type === 'closed') {
+      setType(type);
+    } else {
+      setType(type);
+    }
   };
 
   useEffect(() => {
@@ -78,7 +87,7 @@ const RepairList = ({ user }) => {
   // console.log('Render: RepairList');
   return (
     <div>
-      <SearchBox filterInitial={filterInitial} searchChange={onSearchChange} handleChange={onFilterChange} />
+      <SearchBox filterInitial={filterInitial} searchChange={onSearchChange} handleChange={onFilterChange} handleType={handleType} />
       <div className='container'>
         <Suspense fallback={<Loading />}>
           {filteredrepairs.map((filteredrepair, i) => {

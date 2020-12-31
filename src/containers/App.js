@@ -11,7 +11,7 @@ import './App.css';
 library.add(faInbox, faTools, faReceipt, faCheck, faSpinner);
 
 const initialState = {
-  route: 'signin',
+  route: 'repairs',
   isSignedIn: false,
   user: {
     id: '',
