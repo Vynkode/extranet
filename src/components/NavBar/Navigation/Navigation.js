@@ -9,19 +9,18 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
         </p>
       </nav>
     );
+  } else {
+    return (
+      <nav className='tl tc w-third pa2'>
+        <p onClick={() => onRouteChange('signin')}>
+          <a className='f4 link dim white pointer' style={{ float: 'right', marginTop: '1rem', marginRight: '9rem' }}>
+            Entrar
+          </a>
+        </p>
+        {/* <p onClick={() => onRouteChange('register')} className='f3 link dim white pa3 pointer'>Register</p> */}
+      </nav>
+    );
   }
-  // else {
-  //   return (
-  //     <nav className='tl tc w-third pa2'>
-  //       <p onClick={() => onRouteChange('signin')}>
-  //         <a className='f4 link dim white pointer' style={{ float: 'right', marginTop: '1rem', marginRight: '9rem' }}>
-  //           Entrar
-  //         </a>
-  //       </p>
-  //       {/* <p onClick={() => onRouteChange('register')} className='f3 link dim white pa3 pointer'>Register</p> */}
-  //     </nav>
-  //   );
-  // }
 };
 
 export default Navigation;
