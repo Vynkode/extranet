@@ -16,11 +16,16 @@ const initialState = {
   user: {
     id: '',
     name: '',
+    company: '',
+    taxID: '',
     email: '',
     phone: '',
     street: '',
     postalCode: '',
     city: '',
+    state: '',
+    contact: '',
+    fax: '',
   },
 };
 
@@ -30,16 +35,21 @@ class App extends Component {
     this.state = initialState;
   }
 
-  loadUser = (data) => {
+  loadUser = (user) => {
     this.setState({
       user: {
-        id: data.id,
-        name: data.nombre,
-        email: data.email,
-        phone: data.telefono1,
-        street: data.calle,
-        postalCode: data.distrito,
-        city: data.ciudad,
+        id: user.id,
+        name: user.nombre,
+        company: user.razon_social,
+        taxID: user.nif,
+        email: user.email,
+        phone: user.telefono1,
+        street: user.calle,
+        postalCode: user.distrito,
+        city: user.ciudad,
+        state: user.provincia,
+        contact: user.contacto,
+        fax: user.fax,
       },
     });
   };
