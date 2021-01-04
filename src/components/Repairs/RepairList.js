@@ -15,7 +15,7 @@ const RepairList = ({ user }) => {
   const [type, setType] = React.useState('workshop');
 
   const fetchRepairs = async () => {
-    const response = await fetch(`https://extranet-backend.herokuapp.com/${user.email}`, {
+    const response = await fetch(`https://extranet-backend.herokuapp.com/repairsworkshop/${user.email}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
