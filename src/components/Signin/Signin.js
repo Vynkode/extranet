@@ -33,7 +33,6 @@ class Signin extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('repairs');
-          console.log(user);
         }
       });
   };
