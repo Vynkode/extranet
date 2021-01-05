@@ -68,19 +68,10 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWork
       ) : (
         <input className='searchbox' type='search' placeholder='Busqueda' onChange={searchChange} />
       )}
-      {type === 'workshop' ? (
+      {/* {type === 'workshop' ? ( */}
+      <div className='type'>
         <button
-          className='type'
-          onClick={() => {
-            handleType('closed');
-            fetchRepairsClosed();
-          }}
-        >
-          Entregadas
-        </button>
-      ) : (
-        <button
-          className='type'
+          className={type === 'workshop' ? 'selected' : ''}
           onClick={() => {
             handleType('workshop');
             fetchRepairsWorkshop();
@@ -88,7 +79,18 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWork
         >
           Taller
         </button>
-      )}
+        <button
+          className={type === 'closed' ? 'selected' : ''}
+          onClick={() => {
+            handleType('closed');
+            fetchRepairsClosed();
+          }}
+        >
+          Entregadas
+        </button>
+        {/* ) : ( */}
+      </div>
+      {/* )} */}
     </div>
   );
 };

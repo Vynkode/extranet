@@ -5,11 +5,11 @@ import Navigation from '../Navigation/Navigation';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: {
-        name: 'Mariano García',
-      },
-    };
+    // this.state = {
+    //   user: {
+    //     name: 'Mariano García',
+    //   },
+    // };
   }
   render() {
     return (
@@ -20,7 +20,7 @@ class Menu extends Component {
         <div className='tl tc w-third pa2'>
           <img alt='logo' width='340px' src={logo} />
         </div>
-        <Navigation isSignedIn={this.props.isSignedIn} onRouteChange={this.props.onRouteChange} />
+        <Navigation isSignedIn={this.props.isSignedIn} user={this.props.user} useronRouteChange={this.props.onRouteChange} />
       </div>
     );
   }

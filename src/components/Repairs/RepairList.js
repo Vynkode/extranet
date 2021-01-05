@@ -109,7 +109,7 @@ const RepairList = ({ user }) => {
         handleType={handleType}
         type={type}
       />
-      {type === 'workshop' ? <div className='typetitle'>EN REPARACIÓN</div> : <div className='typetitle'>ENTREGADAS</div>}
+      {/* {type === 'workshop' ? <div className='typetitle'>EN REPARACIÓN</div> : <div className='typetitle'>ENTREGADAS</div>} */}
       <div className='container'>
         <Suspense fallback={<Loading />}>
           {filteredrepairs.map((filteredrepair, i) => {

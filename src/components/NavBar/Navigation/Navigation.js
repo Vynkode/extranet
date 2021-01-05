@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
+const Navigation = ({ onRouteChange, isSignedIn, user }) => {
   if (isSignedIn) {
     return (
       <nav className='tl tc w-third pa2 white'>
-        <p onClick={() => onRouteChange('signout')} className='f4 link white pa3 pointer'>
+        <span>{user.name}</span>
+        <a onClick={() => onRouteChange('signout')} className='f4 link white pa3 pointer'>
           Salir
-        </p>
+        </a>
       </nav>
     );
   } else {

@@ -67,7 +67,7 @@ class App extends Component {
     const { isSignedIn, user, route } = this.state;
     return (
       <div className='App'>
-        <NavBar isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        <NavBar isSignedIn={isSignedIn} user={user} onRouteChange={this.onRouteChange} />
         {route === 'repairs' ? (
           <div>
             <Scroll>
