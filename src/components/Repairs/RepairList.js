@@ -14,7 +14,7 @@ const RepairList = ({ user }) => {
   const [filteroption, setFilteroption] = useState(1);
   const [type, setType] = React.useState('workshop');
 
-  const fetchRepairs = async () => {
+  const fetchRepairsWorkshop = async () => {
     console.log(user);
     const response = await fetch(`https://extranet-backend.herokuapp.com/repairsworkshop/${user.email}`, {
       method: 'GET',
@@ -22,8 +22,8 @@ const RepairList = ({ user }) => {
     });
     const json = await response.json();
     // console.log(json);
-    setRepairs(json[1]);
     setCount(json[0]);
+    setRepairs(json[1]);
   };
   //     .then(function (response) {
   //       if (response.status === 200) {
@@ -32,6 +32,16 @@ const RepairList = ({ user }) => {
   //     })
   //     .then((response) => setRepairs(response));
   // };
+
+  const fetchRepairsClosed = async () => {
+    const response = await fetch(`https://extranet-backend.herokuapp.com/repairsclosed/${user.email}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const json = await response.json();
+    setCount(json[0]);
+    setRepairs(json[1]);
+  };
 
   const filterInitial = (value) => {
     setSearchfield(value);
@@ -49,15 +59,17 @@ const RepairList = ({ user }) => {
 
   const handleType = (type) => {
     if (type === 'closed') {
+      fetchRepairsClosed();
       setType(type);
     } else {
+      fetchRepairsWorkshop();
       setType(type);
     }
   };
 
   useEffect(() => {
     // console.log('Cargando reparaciones');
-    fetchRepairs();
+    fetchRepairsWorkshop();
     // console.log('Reparaciones cargadas');
     // console.log(repairs);
   }, []);

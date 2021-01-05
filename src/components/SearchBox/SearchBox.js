@@ -57,7 +57,7 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, handleType, type
       ) : (
         <input className='searchbox' type='search' placeholder='Busqueda' onChange={searchChange} />
       )}
-      {type === 'workshop' ? <a onClick={handleType('workshop')}>Entregadas</a> : <a onClick={handleType('closed')}>Taller</a>}
+      {type === 'workshop' ? <button onClick={handleType('workshop')}>Entregadas</button> : <a onClick={handleType('closed')}>Taller</a>}
     </div>
   );
 };
