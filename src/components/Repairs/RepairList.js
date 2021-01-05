@@ -59,10 +59,10 @@ const RepairList = ({ user }) => {
 
   const handleType = (type) => {
     if (type === 'closed') {
-      // fetchRepairsClosed();
+      fetchRepairsClosed();
       setType(type);
-    } else {
-      // fetchRepairsWorkshop();
+    } else if (type === 'workshop') {
+      fetchRepairsWorkshop();
       setType(type);
     }
   };
