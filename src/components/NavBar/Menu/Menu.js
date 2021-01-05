@@ -3,8 +3,8 @@ import logo from './logo.png';
 import Navigation from '../Navigation/Navigation';
 
 class Menu extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     // this.state = {
     //   user: {
     //     name: 'Mariano García',
@@ -20,7 +20,7 @@ class Menu extends Component {
         <div className='tl tc w-third pa2'>
           <img alt='logo' width='340px' src={logo} />
         </div>
-        <Navigation isSignedIn={this.props.isSignedIn} user={this.props.user} useronRouteChange={this.props.onRouteChange} />
+        <Navigation isSignedIn={this.props.isSignedIn} user={this.props.user} onRouteChange={this.props.onRouteChange} />
       </div>
     );
   }

@@ -49,7 +49,7 @@ const Repair = ({ number, reference, entrydate, brand, model, type, warranty, bu
           <div className='tag-data'>
             <span className='tag'>Reparación</span>
             <br></br>
-            <span className='data'>{repair}</span>
+            <span className='data-remark'>{repair}</span>
           </div>
         </div>
         <div>
