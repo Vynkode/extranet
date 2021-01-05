@@ -88,7 +88,7 @@ const RepairList = ({ user }) => {
   // console.log('Render: RepairList');
   return (
     <div>
-      <SearchBox filterInitial={filterInitial} searchChange={onSearchChange} handleChange={onFilterChange} handleType={handleType} />
+      <SearchBox filterInitial={filterInitial} searchChange={onSearchChange} handleChange={onFilterChange} handleType={handleType} type={type} />
       <div className='container'>
         <Suspense fallback={<Loading />}>
           {filteredrepairs.map((filteredrepair, i) => {

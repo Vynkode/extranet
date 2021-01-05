@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBox = ({ filterInitial, searchChange, handleChange }) => {
+const SearchBox = ({ filterInitial, searchChange, handleChange, type }) => {
   const classes = useStyles();
   const [filtro, setFiltro] = React.useState(1);
 
@@ -57,7 +57,7 @@ const SearchBox = ({ filterInitial, searchChange, handleChange }) => {
       ) : (
         <input className='searchbox' type='search' placeholder='Busqueda' onChange={searchChange} />
       )}
-      {/* {type === 'workshop' ? <a onClick={handleType('workshop')}>Entregadas</a> : <a onClick={handleType('closed')}>Taller</a>} */}
+      {type === 'workshop' ? <a onClick={handleType('workshop')}>Entregadas</a> : <a onClick={handleType('closed')}>Taller</a>}
     </div>
   );
 };
