@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBox = ({ filterInitial, searchChange, handleChange, type }) => {
+const SearchBox = ({ filterInitial, searchChange, handleChange, handleType, type }) => {
   const classes = useStyles();
   const [filtro, setFiltro] = React.useState(1);
 
