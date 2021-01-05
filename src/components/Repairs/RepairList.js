@@ -12,7 +12,7 @@ const RepairList = ({ user }) => {
   const [searchfield, setSearchfield] = useState('');
   const [filteredrepairs, setFilteredrepairs] = useState([]);
   const [filteroption, setFilteroption] = useState(1);
-  const [type, setType] = React.useState('workshop');
+  // const [type, setType] = React.useState('');
 
   const fetchRepairsWorkshop = async () => {
     console.log(user);
@@ -57,15 +57,15 @@ const RepairList = ({ user }) => {
     console.log(searchfield);
   };
 
-  const handleType = (type) => {
-    if (type === 'closed') {
-      fetchRepairsClosed();
-      setType(type);
-    } else if (type === 'workshop') {
-      fetchRepairsWorkshop();
-      setType(type);
-    }
-  };
+  // const handleType = (type) => {
+  //   if (type === 'closed') {
+  //     fetchRepairsClosed();
+  //     setType(type);
+  //   } else if (type === 'workshop') {
+  //     fetchRepairsWorkshop();
+  //     setType(type);
+  //   }
+  // };
 
   useEffect(() => {
     // console.log('Cargando reparaciones');
@@ -100,7 +100,13 @@ const RepairList = ({ user }) => {
   // console.log('Render: RepairList');
   return (
     <div>
-      <SearchBox filterInitial={filterInitial} searchChange={onSearchChange} handleChange={onFilterChange} handleType={handleType} type={type} />
+      <SearchBox
+        filterInitial={filterInitial}
+        searchChange={onSearchChange}
+        handleChange={onFilterChange}
+        fetchRepairsWorkshop={fetchRepairsWorkshop}
+        fetchRepairsClosed={fetchRepairsClosed}
+      />
       <div className='container'>
         <Suspense fallback={<Loading />}>
           {filteredrepairs.map((filteredrepair, i) => {

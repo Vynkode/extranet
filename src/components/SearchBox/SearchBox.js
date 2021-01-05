@@ -25,9 +25,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBox = ({ filterInitial, searchChange, handleChange, handleType, type }) => {
+const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWorkshop, fetchRepairsClosed }) => {
   const classes = useStyles();
   const [filtro, setFiltro] = React.useState(1);
+  const [type, setType] = React.useState('workshop');
 
   const handleSelect = (event) => {
     filterInitial('');
@@ -35,6 +36,16 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, handleType, type
     setFiltro(event.target.value);
     console.log(filtro);
     handleChange(event);
+  };
+
+  const handleType = (type) => {
+    if (type === 'closed') {
+      fetchRepairsClosed();
+      setType(type);
+    } else if (type === 'workshop') {
+      fetchRepairsWorkshop();
+      setType(type);
+    }
   };
 
   // console.log('Render: Searchbox');
@@ -57,7 +68,27 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, handleType, type
       ) : (
         <input className='searchbox' type='search' placeholder='Busqueda' onChange={searchChange} />
       )}
-      {type === 'workshop' ? <button onClick={handleType('workshop')}>Entregadas</button> : <a onClick={handleType('closed')}>Taller</a>}
+      {type === 'workshop' ? (
+        <button
+          className='type'
+          onClick={() => {
+            handleType('closed');
+            fetchRepairsClosed();
+          }}
+        >
+          Entregadas
+        </button>
+      ) : (
+        <button
+          className='type'
+          onClick={() => {
+            handleType('workshop');
+            fetchRepairsWorkshop();
+          }}
+        >
+          Taller
+        </button>
+      )}
     </div>
   );
 };
