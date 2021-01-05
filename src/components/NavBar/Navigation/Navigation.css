@@ -1,0 +1,11 @@
+.user {
+  text-align: right;
+  margin-top: 35px;
+}
+.user-name {
+  display: inline;
+}
+
+.user-icon {
+  margin: 0 10px;
+}

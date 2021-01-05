@@ -3,7 +3,6 @@ import moment from 'moment';
 import SearchBox from '../SearchBox/SearchBox';
 const Repair = lazy(() => import('./Repair'));
 import Loading from '../Loading/Loading';
-// import Repair from './Repair';
 import './RepairList.css';
 
 const RepairList = ({ user }) => {
@@ -109,7 +108,6 @@ const RepairList = ({ user }) => {
         handleType={handleType}
         type={type}
       />
-      {/* {type === 'workshop' ? <div className='typetitle'>EN REPARACIÓN</div> : <div className='typetitle'>ENTREGADAS</div>} */}
       <div className='container'>
         <Suspense fallback={<Loading />}>
           {filteredrepairs.map((filteredrepair, i) => {

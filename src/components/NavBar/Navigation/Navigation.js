@@ -1,11 +1,14 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Navigation.css';
 
 const Navigation = ({ onRouteChange, isSignedIn, user }) => {
   if (isSignedIn) {
     return (
-      <nav className='tl tc w-third pa2 white'>
-        <span>{user.name}</span>
-        <a onClick={() => onRouteChange('signout')} className='f4 link white pa3 pointer'>
+      <nav className='tl tc w-third pa2 white user'>
+        <div className='user-name'>{user.name}</div>
+        <FontAwesomeIcon className='user-icon' icon='user' />
+        <a onClick={() => onRouteChange('signout')} className='f5 link white pa3 pointer'>
           Salir
         </a>
       </nav>
