@@ -5,10 +5,10 @@ import NavBar from '../components/NavBar/NavBar';
 import RepairList from '../components/Repairs/RepairList';
 import Register from '../components/Register/Register';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faInbox, faTools, faReceipt, faCheck, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faInbox, faTools, faReceipt, faCheck, faSpinner, faUser, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
-library.add(faInbox, faTools, faReceipt, faCheck, faSpinner, faUser);
+library.add(faInbox, faTools, faReceipt, faCheck, faSpinner, faUser, faFilePdf);
 
 const initialState = {
   route: 'repairs',

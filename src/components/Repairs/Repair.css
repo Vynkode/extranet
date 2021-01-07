@@ -156,7 +156,11 @@
   border: 0;
   background-color: #252525;
   cursor: pointer;
-  transition: 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.tab-btn:hover {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .tabs .active {
@@ -175,4 +179,36 @@
   border-left: 2px solid rgba(159, 48, 48, 0.8);
   transition: transform 0.2s;
   transform: translateY(10px);
+}
+
+.icons {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  bottom: 10px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.icon-link {
+  color: white;
+}
+
+.icons div .tag-icon {
+  display: inline-block;
+  width: 100%;
+  color: #616161;
+  font-size: 10px;
+  padding: 0 0 5px 0;
+  text-align: center;
+}
+
+.icons div .icon {
+  color: white;
+}
+
+.icons div .icon:hover {
+  color: rgba(159, 48, 48, 0.9);
+  transition: color 0.5s ease;
 }

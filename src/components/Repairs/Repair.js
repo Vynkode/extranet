@@ -1,5 +1,6 @@
 import React from 'react';
 import Tabs from '../Tabs/Tabs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Repair.css';
 
 const Repair = ({
@@ -115,6 +116,26 @@ const Repair = ({
           <div className='tag-data'>
             <span className='tag'>F. Entrega</span>
             <span className='data'>{delivereddate}</span>
+          </div>
+          <div className='icons'>
+            <div>
+              <span className='tag-icon'>Resguardo</span>
+              <a className='icon-link' href='#'>
+                <FontAwesomeIcon className='icon' icon={['fas', 'file-pdf']} />
+              </a>
+            </div>
+            <div>
+              <span className='tag-icon'>Reparación</span>
+              <a href='#'>
+                <FontAwesomeIcon className='icon' icon={['fas', 'file-pdf']} />
+              </a>
+            </div>
+            <div>
+              <span className='tag-icon'>Presupuesto</span>
+              <a href='#'>
+                <FontAwesomeIcon className='icon' icon={['fas', 'file-pdf']} />
+              </a>
+            </div>
           </div>
         </div>
       </Tabs>
