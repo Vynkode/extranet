@@ -107,6 +107,7 @@ const RepairList = ({ user }) => {
         fetchRepairsClosed={fetchRepairsClosed}
         handleType={handleType}
         type={type}
+        count={count}
       />
       <div className='container'>
         <Suspense fallback={<Loading />}>
@@ -116,17 +117,25 @@ const RepairList = ({ user }) => {
                 key={i}
                 number={filteredrepair.numero}
                 reference={filteredrepair.su_referencia}
+                photo={filteredrepair.foto_entrada}
+                warranty={filteredrepair.tipo_reparacion}
                 entrydate={filteredrepair.f_entrada}
                 brand={filteredrepair.marca}
                 model={filteredrepair.modelo}
                 type={filteredrepair.tipo_aparato}
-                warranty={filteredrepair.tipo_reparacion}
                 fault={filteredrepair.averia}
                 remark={filteredrepair.observaciones}
                 budget={filteredrepair.presupuestar}
+                budgetdate={filteredrepair.f_presupuesto}
+                budgetdateanswer={filteredrepair.f_respuesta_ppto}
+                budgetaccept={filteredrepair.rechazado}
+                budgetrepair={filteredrepair.presupuesto}
+                budgetprice={filteredrepair.p_base_imponible}
                 repdate={filteredrepair.f_reparacion}
                 repair={filteredrepair.reparacion}
-                cost={filteredrepair.cost}
+                bill={filteredrepair.f_base_imponible}
+                delivertype={filteredrepair.agencia}
+                delivereddate={filteredrepair.f_entrega}
                 send={filteredrepair.send}
                 delivered={filteredrepair.delivered}
               />

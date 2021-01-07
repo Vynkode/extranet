@@ -11,14 +11,14 @@ import './App.css';
 library.add(faInbox, faTools, faReceipt, faCheck, faSpinner, faUser);
 
 const initialState = {
-  route: 'signin',
-  isSignedIn: false,
+  route: 'repairs',
+  isSignedIn: true,
   user: {
     id: '',
     name: '',
     company: '',
     taxID: '',
-    email: '',
+    email: 'resparea04_sabadell@elcorteingles.es',
     phone: '',
     street: '',
     postalCode: '',

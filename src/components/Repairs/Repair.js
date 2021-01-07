@@ -2,7 +2,31 @@ import React from 'react';
 import Tabs from '../Tabs/Tabs';
 import './Repair.css';
 
-const Repair = ({ number, reference, entrydate, brand, model, type, warranty, budget, repdate, repair, cost, send, delivered, fault, remark }) => {
+const Repair = ({
+  number,
+  reference,
+  photo,
+  warranty,
+  entrydate,
+  brand,
+  model,
+  type,
+  fault,
+  remark,
+  budget,
+  budgetdate,
+  budgetdateanswer,
+  budgetaccept,
+  budgetrepair,
+  budgetprice,
+  repdate,
+  repair,
+  bill,
+  delivertype,
+  delivereddate,
+  send,
+  delivered,
+}) => {
   // console.log('Render: Repair');
   return (
     <div className='card'>
@@ -51,14 +75,47 @@ const Repair = ({ number, reference, entrydate, brand, model, type, warranty, bu
             <br></br>
             <span className='data-remark'>{repair}</span>
           </div>
+          <div className='tag-data'>
+            <span className='tag-cost'>Precio</span>
+            <br></br>
+            <span className='data'>{bill} € (+ IVA)</span>
+          </div>
         </div>
         <div>
           <h5>Prespuesto</h5>
-          <p>Aquí estarán los datos del presupuesto</p>
+          <div className='tag-data'>
+            <span className='tag'>F. Presupuesto</span>
+            <span className='data'>{budgetdate}</span>
+          </div>
+          <div className='tag-data'>
+            <span className='tag'>Presupuesto</span>
+            <br></br>
+            <span className='data-remark'>{budgetrepair}</span>
+          </div>
+          <div className='tag-data'>
+            <span className='tag'>F. Respuesta</span>
+            <span className='data'>{budgetdateanswer}</span>
+          </div>
+          <div className='tag-data'>
+            <span className='tag'>Aceptado</span>
+            <span className='data'>{budgetaccept}</span>
+          </div>
+          <div className='tag-data'>
+            <span className='tag-cost'>Precio</span>
+            <br></br>
+            <span className='data'>{budgetprice} € (+ IVA)</span>
+          </div>
         </div>
         <div>
           <h5>Entrega</h5>
-          <p>Aquí estarán los datos del envío</p>
+          <div className='tag-data'>
+            <span className='tag'>Tipo Entrega</span>
+            <span className='data'>{delivertype}</span>
+          </div>
+          <div className='tag-data'>
+            <span className='tag'>F. Entrega</span>
+            <span className='data'>{delivereddate}</span>
+          </div>
         </div>
       </Tabs>
     </div>

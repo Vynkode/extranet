@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWorkshop, fetchRepairsClosed, handleType, type }) => {
+const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWorkshop, fetchRepairsClosed, handleType, type, count }) => {
   const classes = useStyles();
   const [filtro, setFiltro] = React.useState(1);
   // const [type, setType] = React.useState('workshop');
@@ -77,7 +77,7 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWork
             fetchRepairsWorkshop();
           }}
         >
-          Taller
+          Taller {type === 'workshop' ? ` (${count})` : ''}
         </button>
         <button
           className={type === 'closed' ? 'selected' : ''}
@@ -86,7 +86,7 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWork
             fetchRepairsClosed();
           }}
         >
-          Entregadas
+          Entregadas {type === 'closed' ? ` (${count})` : ''}
         </button>
         {/* ) : ( */}
       </div>
