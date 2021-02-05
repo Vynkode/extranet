@@ -68,7 +68,6 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWork
       ) : (
         <input className='searchbox' type='search' placeholder='Busqueda' onChange={searchChange} />
       )}
-      {/* {type === 'workshop' ? ( */}
       <div className='type'>
         <button
           className={type === 'workshop' ? 'selected' : ''}
@@ -88,9 +87,7 @@ const SearchBox = ({ filterInitial, searchChange, handleChange, fetchRepairsWork
         >
           Entregadas {type === 'closed' ? ` (${count})` : ''}
         </button>
-        {/* ) : ( */}
       </div>
-      {/* )} */}
     </div>
   );
 };

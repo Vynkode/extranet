@@ -20,7 +20,7 @@ class Menu extends Component {
         <div className='tl tc w-third pa2'>
           <img alt='logo' width='340px' src={logo} />
         </div>
-        <Navigation isSignedIn={this.props.isSignedIn} user={this.props.user} onRouteChange={this.props.onRouteChange} />
+        <Navigation isSignedIn={this.props.isSignedIn} user={this.props.user} onRouteChange={this.props.onRouteChange} toggleModal={this.props.toggleModal} />
       </div>
     );
   }

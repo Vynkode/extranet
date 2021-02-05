@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navigation.css';
+import Dropdown from './Dropdown/Dropdown';
+// import Modal from '../../Modal/Modal';
 
-const Navigation = ({ onRouteChange, isSignedIn, user }) => {
+const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
+  const [dropdown, setDropdown] = useState(false);
+  // const [modal, setModal] = useState(false);
+
+  // const closeModal = () => setModal(false);
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const closeDropdown = () => setDropdown(false);
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
+
+  const onMouseClick = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
   if (isSignedIn) {
     return (
-      <nav className='tl tc w-third pa2 white user'>
+      <nav onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='w-third pa2 white user'>
+        {/* <Modal data={user} close={closeModal} show={modal} /> */}
         <div className='user-name'>{user.name}</div>
         <FontAwesomeIcon className='user-icon' icon='user' />
-        <a onClick={() => onRouteChange('signout')} className='f5 link white pa3 pointer'>
-          Salir
-        </a>
+        {dropdown && <Dropdown onRouteChange={onRouteChange} closeDropdown={closeDropdown} toggleModal={toggleModal} />}
       </nav>
     );
   } else {

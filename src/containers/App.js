@@ -4,21 +4,24 @@ import Scroll from '../components/Scroll/Scroll';
 import NavBar from '../components/NavBar/NavBar';
 import RepairList from '../components/Repairs/RepairList';
 import Register from '../components/Register/Register';
+import Modal from '../components/Modal/Modal';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faInbox, faTools, faReceipt, faCheck, faSpinner, faUser, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import { faInbox, faTools, faReceipt, faCheck, faSpinner, faUser, faFilePdf, faSignOutAlt, faTimes, faIdBadge, faIdCard } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
-library.add(faInbox, faTools, faReceipt, faCheck, faSpinner, faUser, faFilePdf);
+library.add(faInbox, faTools, faReceipt, faCheck, faSpinner, faUser, faFilePdf, faSignOutAlt, faTimes, faInstagram, faFacebookSquare, faIdBadge, faIdCard);
 
 const initialState = {
-  route: 'repairs',
-  isSignedIn: true,
+  modalOpen: false,
+  route: 'signin',
+  isSignedIn: false,
   user: {
     id: '',
     name: '',
     company: '',
     taxID: '',
-    email: 'resparea04_sabadell@elcorteingles.es',
+    email: '',
     phone: '',
     street: '',
     postalCode: '',
@@ -26,6 +29,7 @@ const initialState = {
     state: '',
     contact: '',
     fax: '',
+    retailer: false,
   },
 };
 
@@ -50,6 +54,8 @@ class App extends Component {
         state: user.provincia,
         contact: user.contacto,
         fax: user.fax,
+        retailer: user.distribuidor,
+        firstTime: false,
       },
     });
   };
@@ -63,11 +69,21 @@ class App extends Component {
     this.setState({ route: route });
   };
 
+  toggleModal = () => {
+    if (this.state.modalOpen) {
+      this.setState({ modalOpen: false });
+    } else {
+      this.setState({ modalOpen: true });
+    }
+  };
+
   render() {
-    const { isSignedIn, user, route } = this.state;
+    const { isSignedIn, user, route, modalOpen } = this.state;
     return (
       <div className='App'>
-        <NavBar isSignedIn={isSignedIn} user={user} onRouteChange={this.onRouteChange} />
+        {modalOpen ? <div onClick={this.toggleModal} className='back-drop'></div> : null}
+        <Modal data={user} close={this.toggleModal} show={modalOpen} />
+        <NavBar isSignedIn={isSignedIn} user={user} onRouteChange={this.onRouteChange} toggleModal={this.toggleModal} />
         {route === 'repairs' ? (
           <div>
             <Scroll>

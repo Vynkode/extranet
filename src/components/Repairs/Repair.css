@@ -116,16 +116,18 @@
   text-align: right;
 }
 
-.card .tab-content div .data,
-.card .tab-content div .data-fault,
-.card .tab-content div .data-remark {
+.card .tab-content div .data {
   float: right;
   font-size: 10px;
   text-align: right;
+  font-style: italic;
 }
 
 .card .tab-content div .data-fault,
 .card .tab-content div .data-remark {
+  float: right;
+  font-size: 13px;
+  text-align: right;
   line-height: 1.1;
 }
 

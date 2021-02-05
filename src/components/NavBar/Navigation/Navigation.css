@@ -1,11 +1,22 @@
 .user {
-  text-align: right;
+  position: relative;
+  width: auto;
+  text-align: center;
   margin-top: 35px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.3s linear;
 }
+
 .user-name {
   display: inline;
 }
 
 .user-icon {
   margin: 0 10px;
+  font-size: 1.2em;
+}
+
+.user:hover {
+  color: rgba(159, 48, 48, 0.9);
 }

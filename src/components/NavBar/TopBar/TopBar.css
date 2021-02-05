@@ -15,16 +15,19 @@
   width: 100px;
   padding: 10px 0 0 20px;
   text-align: left;
+  font-size: 1.5em;
 }
 
 .social-icon {
-  margin-right: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  margin-right: 12px;
+  transition: all 0.3s linear;
 }
 
 .social-icon:hover,
 .social-icon:focus {
-  opacity: 0.5;
-  transition: opacity 0.15s ease-in;
+  color: rgba(159, 48, 48, 0.9);
 }
 .text {
   color: #ffffff;

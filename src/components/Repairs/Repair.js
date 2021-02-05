@@ -1,6 +1,7 @@
 import React from 'react';
 import Tabs from '../Tabs/Tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import RepairPdf from '../Pdf/RepairPdf';
 import './Repair.css';
 
 const Repair = ({
@@ -120,7 +121,7 @@ const Repair = ({
           <div className='icons'>
             <div>
               <span className='tag-icon'>Resguardo</span>
-              <a className='icon-link' href='#'>
+              <a className='icon-link' onClick={<RepairPdf />}>
                 <FontAwesomeIcon className='icon' icon={['fas', 'file-pdf']} />
               </a>
             </div>

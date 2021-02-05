@@ -12,7 +12,7 @@ class NavBar extends Component {
     return (
       <div>
         <TopBar />
-        <Menu isSignedIn={this.props.isSignedIn} user={this.props.user} onRouteChange={this.props.onRouteChange} />
+        <Menu isSignedIn={this.props.isSignedIn} user={this.props.user} onRouteChange={this.props.onRouteChange} toggleModal={this.props.toggleModal} />
       </div>
     );
   }
