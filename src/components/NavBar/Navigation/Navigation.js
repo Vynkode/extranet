@@ -6,9 +6,6 @@ import Dropdown from './Dropdown/Dropdown';
 
 const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
   const [dropdown, setDropdown] = useState(false);
-  // const [modal, setModal] = useState(false);
-
-  // const closeModal = () => setModal(false);
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
@@ -39,7 +36,6 @@ const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
   if (isSignedIn) {
     return (
       <nav onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='w-third pa2 white user'>
-        {/* <Modal data={user} close={closeModal} show={modal} /> */}
         <div className='user-name'>{user.name}</div>
         <FontAwesomeIcon className='user-icon' icon='user' />
         {dropdown && <Dropdown onRouteChange={onRouteChange} closeDropdown={closeDropdown} toggleModal={toggleModal} />}
