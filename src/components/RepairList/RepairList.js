@@ -15,7 +15,7 @@ const RepairList = ({ user }) => {
   const [type, setType] = React.useState('workshop');
 
   const fetchRepairsWorkshop = async () => {
-    console.log(user);
+    // console.log(user);
     const response = await fetch(
       `https://extranet-backend.herokuapp.com/repairsworkshop/${user.email}`,
       {
@@ -55,12 +55,12 @@ const RepairList = ({ user }) => {
 
   const onFilterChange = (event) => {
     setFilteroption(event.target.value);
-    console.log('el filtro es', filteroption);
+    // console.log('el filtro es', filteroption);
   };
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);
-    console.log(searchfield);
+    // console.log(searchfield);
   };
 
   const handleType = (type) => {
@@ -111,7 +111,7 @@ const RepairList = ({ user }) => {
       }
     });
     setFilteredrepairs(results);
-    console.log(filteredrepairs);
+    // console.log(filteredrepairs);
   }, [searchfield]);
 
   // console.log('Render: RepairList');

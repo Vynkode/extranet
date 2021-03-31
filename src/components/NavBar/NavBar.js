@@ -8,7 +8,7 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log('Render: Navbar');
+    // console.log('Render: Navbar');
     return (
       <div>
         <TopBar />
