@@ -157,7 +157,7 @@ const Repairfull = ({
               <span className="data">{repdate}</span>
             </div>
           </div>
-          {replacementmodel ? (
+          {number ? (
             <div className="right">
               <div className="right-tag-data">
                 <span className="tag">Cambio reloj</span>
@@ -185,14 +185,20 @@ const Repairfull = ({
         </div>
       </section>
       <section className="entrega-full">
-        <header>Entrega</header>
-        <div className="tag-data">
-          <span className="tag left">Tipo Entrega</span>
-          <span className="data left">{delivertype}</span>
-        </div>
-        <div className="tag-data">
-          <span className="tag left">F. Entrega</span>
-          <span className="data left">{delivereddate}</span>
+        <header>Entrega / Envío</header>
+        <div className="main">
+          <div className="left">
+            <div className="left-tag-data">
+              <span className="tag">F. Entrega</span>
+              <span className="data">{delivereddate}</span>
+            </div>
+          </div>
+          <div className="right">
+            <div className="right-tag-data">
+              <span className="tag">Tipo Entrega</span>
+              <span className="data">{delivertype}</span>
+            </div>
+          </div>
         </div>
       </section>
     </article>

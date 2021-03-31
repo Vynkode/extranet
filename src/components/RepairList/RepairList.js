@@ -149,11 +149,11 @@ const RepairList = ({ user }) => {
                 budgetdateanswer={filteredrepair.f_respuesta_ppto}
                 budgetaccept={filteredrepair.rechazado}
                 budgetrepair={filteredrepair.presupuesto}
-                budgetprice={filteredrepair.p_base_imponible}
+                budgetprice={filteredrepair.p_liquido}
                 repdate={filteredrepair.f_reparacion}
                 replacementmodel={filteredrepair.modelo_sustutucion}
                 repair={filteredrepair.reparacion}
-                bill={filteredrepair.f_base_imponible}
+                bill={filteredrepair.f_liquido}
                 delivertype={filteredrepair.agencia}
                 delivereddate={filteredrepair.f_entrega}
                 send={filteredrepair.send}
