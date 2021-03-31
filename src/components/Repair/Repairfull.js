@@ -141,7 +141,7 @@ const Repairfull = ({
           </div>
           <div className="tag-data">
             <span className="tag right">Precio</span>
-            <span className="data right">{budgetprice} € (+ IVA)</span>
+            <span className="data right">{budgetprice} € (IVA incl.)</span>
           </div>
         </section>
       ) : (
@@ -181,7 +181,7 @@ const Repairfull = ({
         </div>
         <div className="tag-data">
           <span className="tag right">Precio</span>
-          <span className="data right">{bill} € (+ IVA)</span>
+          <span className="data right">{bill} € (IVA incl.)</span>
         </div>
       </section>
       <section className="entrega-full">
@@ -197,6 +197,8 @@ const Repairfull = ({
             <div className="right-tag-data">
               <span className="tag">Tipo Entrega</span>
               <span className="data">{delivertype}</span>
+              <span className="tag">Agencía</span>
+              <span className="data">{send}</span>
             </div>
           </div>
         </div>

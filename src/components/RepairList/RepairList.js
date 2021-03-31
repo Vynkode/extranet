@@ -154,9 +154,9 @@ const RepairList = ({ user }) => {
                 replacementmodel={filteredrepair.modelo_sustutucion}
                 repair={filteredrepair.reparacion}
                 bill={filteredrepair.f_liquido}
-                delivertype={filteredrepair.agencia}
+                delivertype={filteredrepair.envio}
                 delivereddate={filteredrepair.f_entrega}
-                send={filteredrepair.send}
+                send={filteredrepair.agencia}
                 delivered={filteredrepair.delivered}
                 process={filteredrepair.proceso}
               />
