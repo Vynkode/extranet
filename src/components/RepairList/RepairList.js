@@ -49,21 +49,21 @@ const RepairList = ({ user }) => {
     setRepairs(json[1]);
   };
 
-  const filterInitial = (value) => {
+  const filterInitial = value => {
     setSearchfield(value);
   };
 
-  const onFilterChange = (event) => {
+  const onFilterChange = event => {
     setFilteroption(event.target.value);
     // console.log('el filtro es', filteroption);
   };
 
-  const onSearchChange = (event) => {
+  const onSearchChange = event => {
     setSearchfield(event.target.value);
     // console.log(searchfield);
   };
 
-  const handleType = (type) => {
+  const handleType = type => {
     if (type === 'workshop') {
       fetchRepairsWorkshop();
       setType(type);
@@ -97,7 +97,7 @@ const RepairList = ({ user }) => {
 
   useEffect(() => {
     // console.log('Filtrando');
-    const results = repairs.filter((repair) => {
+    const results = repairs.filter(repair => {
       if (filteroption === 1) {
         return repair.numero.toString().includes(searchfield);
       } else if (filteroption === 2) {
@@ -158,7 +158,7 @@ const RepairList = ({ user }) => {
                 delivereddate={filteredrepair.f_entrega}
                 send={filteredrepair.agencia}
                 delivered={filteredrepair.delivered}
-                process={filteredrepair.proceso}
+                process={filteredrepair.procesoEstado}
               />
             );
           })}

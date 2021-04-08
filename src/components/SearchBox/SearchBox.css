@@ -8,15 +8,27 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-#root > div > div:nth-child(2) > div > div > div.searchbar > div > div > fieldset {
+#root
+  > div
+  > div:nth-child(2)
+  > div
+  > div
+  > div.searchbar
+  > div
+  > div
+  > fieldset {
   border-color: rgb(118, 118, 118);
 }
 
-#menu- > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded,
-#menu- > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul {
+#menu-
+  > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded,
+#menu-
+  > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded
+  > ul {
   background-color: #252525;
   color: white;
-  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2), -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2),
+    -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
   border-radius: 15px;
 }
 
@@ -27,22 +39,26 @@
   background-color: rgba(159, 48, 48, 0.9);
 }
 
-#menu- > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:hover {
+#menu-
+  > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded
+  > ul
+  > li:hover {
   background-color: rgba(159, 48, 48, 0.4);
 }
 
 .searchbar {
-  position: relative;
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  z-index: 4;
+  background-color: #212121;
+  /*border: 1px blue solid;*/
 }
-
 
 .searchbox {
   padding: 1.1rem;
@@ -83,7 +99,8 @@ input[type='search']::-webkit-search-cancel-button {
   color: white;
   margin: 0 3px 0 3px;
   background-color: #252525;
-  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.4), -1px -1px 0px 0px rgba(255, 255, 255, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.4),
+    -1px -1px 0px 0px rgba(255, 255, 255, 0.2);
   border: none;
 }
 
@@ -93,5 +110,6 @@ input[type='search']::-webkit-search-cancel-button {
 }
 
 .type button.selected {
-  box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.8), inset -1px -1px 0px 0px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.8),
+    inset -1px -1px 0px 0px rgba(255, 255, 255, 0.4);
 }

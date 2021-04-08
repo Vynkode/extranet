@@ -2,7 +2,7 @@
 .card-full {
   box-sizing: border-box;
   max-width: 1400px;
-  height: 220px;
+  height: 230px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -114,14 +114,26 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 125px;
-  padding: 10px 0;
+  width: 150px;
+  /*padding: 10px 0;*/
   font-weight: bold;
+  padding: 0;
+  margin: 0;
   /*background-color: darkslateblue;*/
+}
+
+.card-full .repair-info-full .process-status {
+  /*width: 100%;*/
+  height: 9%;
+  padding: 2% 0;
+  background-color: rgba(159, 48, 48, 0.9);
+  vertical-align: center;
+  margin-bottom: 5px;
 }
 
 .card-full .repair-info-full .number {
   color: rgba(159, 48, 48, 1);
+  font-size: 1.1em;
 }
 
 .card-full .repair-info-full .number-customer {
@@ -131,7 +143,7 @@
 .card-full .repair-info-full img {
   max-height: 135px;
   object-fit: contain;
-  margin: 5px auto;
+  /*margin: 5px auto;*/
   flex-grow: 1;
 }
 

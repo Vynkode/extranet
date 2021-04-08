@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import noImage from './no-image.png';
 import './Repairfull.css';
 
 const Repairfull = ({
@@ -31,49 +32,26 @@ const Repairfull = ({
   process,
 }) => {
   // console.log('Render: Repair');
-  const processStatus = function (p) {
-    switch (p) {
-      case 1:
-        return 'RESGUARDO';
-      case 2:
-      case 3:
-        return 'PRESUPUESTO';
-      case 4:
-        return 'EN REPARACIÓN';
-      case 5:
-      case 7:
-      case 9:
-        return 'ESPERA MATERIAL';
-      case 6:
-        return 'FACTURACIÓN';
-      case 8:
-        return 'ENTREGADA';
-    }
-  };
-
   const accesorios = ['plata', 'correa', 'color', 'forma', 'dibujo'];
 
   return (
     <article className="card-full">
-      <section className="process-status-outer">
-        <header className="process-status-inner">
-          {processStatus(process)}
-        </header>
-        <aside className="pdf-icon-full">
-          <a>
-            {/*onClick={<RepairPdf />}*/}
-            <FontAwesomeIcon className="icon" icon={['fas', 'file-pdf']} />
-          </a>
-        </aside>
-      </section>
+      {/*<section className="process-status-outer">*/}
+      {/*  <header className="process-status-inner">*/}
+      {/*    {processStatus(process)}*/}
+      {/*  </header>*/}
+      {/*  <aside className="pdf-icon-full">*/}
+      {/*    <a>*/}
+      {/*      /!*onClick={<RepairPdf />}*!/*/}
+      {/*      <FontAwesomeIcon className="icon" icon={['fas', 'file-pdf']} />*/}
+      {/*    </a>*/}
+      {/*  </aside>*/}
+      {/*</section>*/}
       <section className="repair-info-full">
+        <div className="process-status">{process}</div>
         <div className="number center">{number}</div>
         <div className="number-customer center">Ref.: {reference}</div>
-        <img
-          className="watch center"
-          src={'https://www.casio-intl.com/product/image/1425303494438/'}
-          alt={'repair photo'}
-        />
+        <img className="watch center" src={noImage} alt={'repair photo'} />
         <div className="repair-type center">{warranty}</div>
         <div className="repair-type center">{warrantydate}</div>
       </section>
