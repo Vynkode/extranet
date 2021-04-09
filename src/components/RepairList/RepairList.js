@@ -14,10 +14,13 @@ const RepairList = ({ user }) => {
   const [filteroption, setFilteroption] = useState(1);
   const [type, setType] = React.useState('workshop');
 
+  const codigo = user.id.slice(0, -2);
+  const dir = user.id.slice(-2);
+
   const fetchRepairsWorkshop = async () => {
     // console.log(user);
     const response = await fetch(
-      `https://extranet-backend.herokuapp.com/repairsworkshop/${user.email}`,
+      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=1`,
       {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -38,7 +41,7 @@ const RepairList = ({ user }) => {
 
   const fetchRepairsClosed = async () => {
     const response = await fetch(
-      `https://extranet-backend.herokuapp.com/repairsclosed/${user.email}`,
+      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=8`,
       {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -142,6 +145,7 @@ const RepairList = ({ user }) => {
                 brand={filteredrepair.marca}
                 model={filteredrepair.modelo}
                 type={filteredrepair.tipo_aparato}
+                accesories={filteredrepair.accesorios}
                 fault={filteredrepair.averia}
                 remark={filteredrepair.observaciones}
                 budget={filteredrepair.presupuestar}

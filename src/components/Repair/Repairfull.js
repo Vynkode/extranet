@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import noImage from './no-image.png';
+import noImage from './reloj.png';
 import './Repairfull.css';
 
 const Repairfull = ({
@@ -13,6 +13,7 @@ const Repairfull = ({
   brand,
   model,
   type,
+  accesories,
   fault,
   remark,
   budget,
@@ -32,7 +33,6 @@ const Repairfull = ({
   process,
 }) => {
   // console.log('Render: Repair');
-  const accesorios = ['plata', 'correa', 'color', 'forma', 'dibujo'];
 
   return (
     <article className="card-full">
@@ -65,11 +65,17 @@ const Repairfull = ({
             </div>
             <ul className="left-ul-data">
               <span className="tag">Accesorios</span>
-              <li className="data-li">{accesorios[0]}</li>
-              <li className="data-li">{accesorios[1]}</li>
-              <li className="data-li">{accesorios[2]}</li>
-              <li className="data-li">{accesorios[3]}</li>
-              <li className="data-li">{accesorios[4]}</li>
+              {accesories ? (
+                accesories.map((acc, i) => {
+                  return (
+                    <li key={i} className="data-li">
+                      {acc}
+                    </li>
+                  );
+                })
+              ) : (
+                <></>
+              )}
             </ul>
           </div>
           <div className="right">
@@ -108,8 +114,6 @@ const Repairfull = ({
               <div className="right-tag-data">
                 <span className="tag">F. Respuesta</span>
                 <span className="data">{budgetdateanswer}</span>
-                <span className="tag">Aceptado</span>
-                <span className="data">{budgetaccept}</span>
               </div>
             </div>
           </div>
@@ -135,21 +139,16 @@ const Repairfull = ({
               <span className="data">{repdate}</span>
             </div>
           </div>
-          {number ? (
+          {replacementmodel ? (
             <div className="right">
               <div className="right-tag-data">
                 <span className="tag">Cambio reloj</span>
-                <span className="data">Sí</span>
-                <span className="tag">Modelo</span>
-                <span className="data">{model}</span>
+                <span className="data">{replacementmodel}</span>
               </div>
             </div>
           ) : (
             <div className="right">
-              <div className="right-tag-data">
-                <span className="tag">Cambio reloj</span>
-                <span className="data">No</span>
-              </div>
+              <div className="right-tag-data"></div>
             </div>
           )}
         </div>
@@ -173,10 +172,10 @@ const Repairfull = ({
           </div>
           <div className="right">
             <div className="right-tag-data">
-              <span className="tag">Tipo Entrega</span>
-              <span className="data">{delivertype}</span>
-              <span className="tag">Agencía</span>
-              <span className="data">{send}</span>
+              {/*<span className="tag">Tipo Entrega</span>*/}
+              {/*<span className="data">{delivertype}</span>*/}
+              {/*<span className="tag">Agencía</span>*/}
+              {/*<span className="data">{send}</span>*/}
             </div>
           </div>
         </div>
