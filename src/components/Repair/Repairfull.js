@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import noImage from './reloj.png';
+import noImage from './no-image.png';
 import './Repairfull.css';
 
 const Repairfull = ({
