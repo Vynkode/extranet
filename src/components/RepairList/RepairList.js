@@ -19,6 +19,8 @@ const RepairList = ({ user }) => {
 
   const fetchRepairsWorkshop = async () => {
     // console.log(user);
+    setRepairs([]);
+    setCount('');
     const response = await fetch(
       `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=1`,
       {
@@ -40,6 +42,8 @@ const RepairList = ({ user }) => {
   // };
 
   const fetchRepairsClosed = async () => {
+    setRepairs([]);
+    setCount('');
     const response = await fetch(
       `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=8`,
       {

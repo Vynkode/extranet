@@ -1,96 +1,104 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './Signin.css';
 
-class Signin extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      signInEmail: '',
-      signInPassword: '',
-    };
-  }
+const Signin = ({ loadUser, width, onRouteChange }) => {
+  const [signInEmail, setSignInEmail] = useState('');
+  const [signInPassword, setSignInPassword] = useState('');
 
-  onEmailChange = (event) => {
-    console.log(event.target.value);
-    this.setState({ signInEmail: event.target.value });
+  let errorDiv, emailDiv, passDiv;
+
+  useEffect(() => {
+    errorDiv = document.querySelector('.errorSignin');
+    emailDiv = document.querySelector('#email-address');
+    passDiv = document.querySelector('#password');
+  });
+
+  const onEmailChange = e => {
+    setSignInEmail(e.target.value);
   };
 
-  onPasswordChange = (event) => {
-    // console.log(event.target.value);
-    this.setState({ signInPassword: event.target.value });
+  const onPasswordChange = e => {
+    setSignInPassword(e.target.value);
   };
 
-  onSubmitSignIn = () => {
-    fetch('https://extranet-backend.herokuapp.com/signin', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => {
-        if (user.id) {
-          this.props.loadUser(user);
-          this.props.onRouteChange('repairs');
+  const onSubmitSignIn = async () => {
+    try {
+      const response = await fetch(
+        'https://extranet-backend.herokuapp.com/signin',
+        {
+          method: 'post',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: signInEmail,
+            password: signInPassword,
+          }),
         }
-      });
+      );
+      if (response.status === 400)
+        throw new Error('El usuario y/o el password no son correctos');
+      const user = await response.json();
+      if (user.id) {
+        loadUser(user);
+        onRouteChange('repairs');
+      }
+    } catch (err) {
+      errorDiv.textContent = err.message;
+      errorDiv.classList.toggle('error');
+      emailDiv.classList.toggle('border-error');
+      passDiv.classList.toggle('border-error');
+      setTimeout(() => {
+        errorDiv.classList.toggle('error');
+        emailDiv.classList.toggle('border-error');
+        passDiv.classList.toggle('border-error');
+      }, 2500);
+    }
   };
 
-  render() {
-    const { onRouteChange } = this.props;
-    return (
-      <article
-        className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center"
-        style={{ backgroundColor: '#272727' }}
-      >
-        <main className="pa4 white">
-          <div className="measure">
-            <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-              <legend className="f1 fw6 ph0 mh0">Usuario</legend>
-              <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">
-                  Email
-                </label>
-                <input
-                  className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                  type="email"
-                  name="email-address"
-                  id="email-address"
-                  onChange={this.onEmailChange}
-                />
-              </div>
-              <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="password">
-                  Contraseña
-                </label>
-                <input
-                  className="br2 b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={this.onPasswordChange}
-                />
-              </div>
-            </fieldset>
-            <div className="">
+  return (
+    <article className="signin">
+      {/*<div>{width}</div>*/}
+      <main className="pa4 white" style={{ position: 'relative' }}>
+        <div className="errorSignin" />
+        <div className="measure">
+          <fieldset id="sign-up" className="ba b--transparent ph0 mh0">
+            <legend>Acceso cliente</legend>
+            <div className="email-container">
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">
+                Email
+              </label>
               <input
-                onClick={this.onSubmitSignIn}
-                className="br2 b white ph3 pv2 input-reset ba b--white-50 bg-transparent grow pointer f6 dib"
-                type="submit"
-                value="Entrar"
+                className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                type="email"
+                name="email-address"
+                id="email-address"
+                onChange={onEmailChange}
               />
             </div>
-            {/* <div className='lh-copy mt3'>
-              <p onClick={() => onRouteChange('register')} className='f6 link dim white db pointer'>
-                Register
-              </p>
-            </div> */}
+            <div className="password-container">
+              <label className="db fw6 lh-copy f6" htmlFor="password">
+                Contraseña
+              </label>
+              <input
+                className="br2 b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                type="password"
+                name="password"
+                id="password"
+                onChange={onPasswordChange}
+              />
+            </div>
+          </fieldset>
+          <div className="">
+            <input
+              onClick={onSubmitSignIn}
+              className="br2 b white ph3 pv2 input-reset ba b--white-50 bg-transparent grow pointer f6 dib"
+              type="submit"
+              value="Entrar"
+            />
           </div>
-        </main>
-      </article>
-    );
-  }
-}
+        </div>
+      </main>
+    </article>
+  );
+};
 
 export default Signin;

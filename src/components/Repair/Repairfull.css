@@ -268,6 +268,11 @@
   padding-bottom: 5px;
 }
 
+.card-full .presupuesto-full .main .right .right-tag-data {
+    padding: 5px 10px 6px 0;
+    /*background-color: mediumseagreen;*/
+}
+
 .card-full .presupuesto-full .main .right .tag,
 .card-full .presupuesto-full .main .right .data {
   width: 100%;
@@ -275,10 +280,7 @@
   text-align: right;
 }
 
-.card-full .presupuesto-full .main .right .right-tag-data {
-  padding: 5px 10px 6px 0;
-  /*background-color: mediumseagreen;*/
-}
+
 
 .card-full .presupuesto-full .main .right .data {
   padding-bottom: 5px;

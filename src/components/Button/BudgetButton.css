@@ -1,0 +1,58 @@
+.budget-buttons {
+  display: inline-flex;
+  /*flex-direction: column;*/
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.budget-button {
+  width: 10ch;
+  height: 30px;
+  border-radius: 15px;
+  color: white;
+  margin: 3px 3px 3px 3px;
+  background-color: #252525;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.4),
+    -1px -1px 0px 0px rgba(255, 255, 255, 0.2);
+  border: none;
+  /*transition: .5s ease;*/
+}
+
+.budget-button:active,
+.budget-button:focus {
+  outline: none;
+}
+
+.budget-button:hover {
+  border: 1px solid rgba(159, 48, 48, 0.9);
+  color: rgba(159, 48, 48, 0.9);
+}
+
+.stamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+    transform: rotate(-14deg);
+  color: #555;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 0.25rem solid #555;
+  text-transform: uppercase;
+  border-radius: 10px;
+  margin: 10px 0 0 20px;
+  -webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
+  -webkit-mask-size: 944px 604px;
+  mix-blend-mode: lighten;
+}
+
+.is-approved {
+  color: rgb(32, 116, 24);
+  border: 0.25rem solid rgb(32, 116, 24);
+}
+
+.is-nope {
+    color: rgba(159, 48, 48, 0.9);
+    border: 0.25rem double rgba(159, 48, 48, 0.9);
+}

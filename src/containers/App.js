@@ -70,7 +70,7 @@ class App extends Component {
     this.state = initialState;
   }
 
-  loadUser = (user) => {
+  loadUser = user => {
     this.setState({
       user: {
         id: user.id,
@@ -91,7 +91,7 @@ class App extends Component {
     });
   };
 
-  onRouteChange = (route) => {
+  onRouteChange = route => {
     if (route === 'signout') {
       this.setState(initialState);
     } else if (route === 'repairs') {

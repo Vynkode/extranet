@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import noImage from './no-image.png';
 import './Repairfull.css';
+import BudgetButton from '../Button/BudgetButton';
 
 const Repairfull = ({
   number,
@@ -121,9 +122,24 @@ const Repairfull = ({
             <span className="tag left">Presupuesto</span>
             <span className="data-remark left">{budgetrepair}</span>
           </div>
-          <div className="tag-data">
-            <span className="tag right">Precio</span>
-            <span className="data right">{budgetprice} € (IVA incl.)</span>
+          <div className="main" style={{ marginTop: '1em' }}>
+            {budget === 'Sí' && !budgetdateanswer ? (
+              <BudgetButton />
+            ) : (
+              <div className="left"></div>
+            )}
+            {budgetprice > 0 ? (
+              <div className="right">
+                <div className="right-tag-data">
+                  <span className="tag right">Precio</span>
+                  <span className="data right">
+                    {budgetprice} € (IVA incl.)
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         </section>
       ) : (
@@ -156,10 +172,14 @@ const Repairfull = ({
           <span className="tag left">Reparación</span>
           <span className="data-remark left">{repair}</span>
         </div>
-        <div className="tag-data">
-          <span className="tag right">Precio</span>
-          <span className="data right">{bill} € (IVA incl.)</span>
-        </div>
+        {bill > 0 ? (
+          <div className="tag-data">
+            <span className="tag right">Precio</span>
+            <span className="data right">{bill} € (IVA incl.)</span>
+          </div>
+        ) : (
+          <></>
+        )}
       </section>
       <section className="entrega-full">
         <header>Entrega / Envío</header>
