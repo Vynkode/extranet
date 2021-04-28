@@ -33,19 +33,32 @@ const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
     }
   };
 
-  if (isSignedIn) {
+  if (isSignedIn && !user.firstTime) {
     return (
-      <nav onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='w-third pa2 white user'>
-        <div className='user-name'>{user.name}</div>
-        <FontAwesomeIcon className='user-icon' icon='user' />
-        {dropdown && <Dropdown onRouteChange={onRouteChange} closeDropdown={closeDropdown} toggleModal={toggleModal} />}
+      <nav
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        className="w-third pa2 white user"
+      >
+        <div className="user-name">{user.name}</div>
+        <FontAwesomeIcon className="user-icon" icon="user" />
+        {dropdown && (
+          <Dropdown
+            onRouteChange={onRouteChange}
+            closeDropdown={closeDropdown}
+            toggleModal={toggleModal}
+          />
+        )}
       </nav>
     );
   } else {
     return (
-      <nav className='tl tc w-third pa2'>
+      <nav className="tl tc w-third pa2">
         <p onClick={() => onRouteChange('signin')}>
-          <a className='f4 link dim white pointer' style={{ float: 'right', marginTop: '1rem', marginRight: '9rem' }}></a>
+          <a
+            className="f4 link dim white pointer"
+            style={{ float: 'right', marginTop: '1rem', marginRight: '9rem' }}
+          ></a>
         </p>
         {/* <p onClick={() => onRouteChange('register')} className='f3 link dim white pa3 pointer'>Register</p> */}
       </nav>

@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar/NavBar';
 import RepairList from '../components/RepairList/RepairList';
 import Register from '../components/Register/Register';
 import Modal from '../components/Modal/Modal';
+import UpdatePassword from '../components/UpdatePassword/UpdatePassword';
 import { ResguardoPDF } from '../components/Pdf/Pdf';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -86,7 +87,7 @@ class App extends Component {
         contact: user.contacto,
         fax: user.fax,
         retailer: user.distribuidor,
-        firstTime: false,
+        firstTime: true,
       },
     });
   };
@@ -106,6 +107,10 @@ class App extends Component {
     } else {
       this.setState({ modalOpen: true });
     }
+  };
+
+  handleChangePassword = data => {
+    this.setState({ user: { ...data, firstTime: false } });
   };
 
   componentDidMount() {
@@ -144,6 +149,7 @@ class App extends Component {
           <div onClick={this.toggleModal} className="back-drop" />
         ) : null}
         <Modal data={user} close={this.toggleModal} show={modalOpen} />
+
         <NavBar
           isSignedIn={isSignedIn}
           width={widthWindow}
@@ -151,7 +157,12 @@ class App extends Component {
           onRouteChange={this.onRouteChange}
           toggleModal={this.toggleModal}
         />
-        {route === 'repairs' ? (
+        {user.firstTime ? (
+          <UpdatePassword
+            user={user}
+            handleChangePassword={this.handleChangePassword}
+          />
+        ) : route === 'repairs' ? (
           <div>
             <Scroll>
               <RepairList
