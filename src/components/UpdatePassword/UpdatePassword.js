@@ -51,12 +51,13 @@ const UpdatePassword = ({ user, handleChangePassword }) => {
         errorDiv.classList.toggle('error');
         actualPasswordDiv.classList.toggle('border-error');
         newPasswordDiv.classList.toggle('border-error');
+        errorDiv.textContent = '';
       }, 2500);
     }
   };
 
   return (
-    <section id="update-password">
+    <article id="update-password">
       <form id="update-password-form" action="">
         <div className="errorSignin" />
         <header>Cambio de contraseña</header>
@@ -88,7 +89,7 @@ const UpdatePassword = ({ user, handleChangePassword }) => {
           Guardar
         </button>
       </form>
-    </section>
+    </article>
   );
 };
 
