@@ -8,12 +8,14 @@ const UpdatePassword = ({ user, handleChangePassword }) => {
   const contable = user.id.slice(0, -2);
   const codigo = user.id.slice(-2);
 
+  console.log([contable, codigo]);
+
   let errorDiv, actualPasswordDiv, newPasswordDiv;
   useEffect(() => {
     errorDiv = document.querySelector('.errorSignin');
     actualPasswordDiv = document.querySelector('#actual-password');
     newPasswordDiv = document.querySelector('#new-password');
-  });
+  }, []);
 
   const handleActualPassword = e => {
     setActualPassword(e.target.value);
@@ -32,8 +34,8 @@ const UpdatePassword = ({ user, handleChangePassword }) => {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            contable: '012345678905',
-            codigo: '00',
+            contable: contable,
+            codigo: codigo,
             actualPassword,
             newPassword,
           }),

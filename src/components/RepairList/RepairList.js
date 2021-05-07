@@ -17,6 +17,18 @@ const RepairList = ({ user }) => {
   const codigo = user.id.slice(0, -2);
   const dir = user.id.slice(-2);
 
+  const fetchRepairs = async (codigo, dir, status) => {
+    setCount('');
+    setRepairs([]);
+    const response = await fetch(
+      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=${status}`,
+      { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+    );
+    const data = await response.json();
+    setCount(data[0]);
+    setRepairs(data[1]);
+  };
+
   const fetchRepairsWorkshop = async () => {
     // console.log(user);
     setRepairs([]);
@@ -33,13 +45,6 @@ const RepairList = ({ user }) => {
     setCount(json[0]);
     setRepairs(json[1]);
   };
-  //     .then(function (response) {
-  //       if (response.status === 200) {
-  //         return response.json();
-  //       }
-  //     })
-  //     .then((response) => setRepairs(response));
-  // };
 
   const fetchRepairsClosed = async () => {
     setRepairs([]);

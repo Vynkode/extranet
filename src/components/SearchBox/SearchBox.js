@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './SearchBox.css';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   formControl: {
     color: 'white',
     minWidth: 130,
@@ -39,7 +39,7 @@ const SearchBox = ({
   const [filtro, setFiltro] = React.useState(1);
   // const [type, setType] = React.useState('workshop');
 
-  const handleSelect = (event) => {
+  const handleSelect = event => {
     filterInitial('');
     document.getElementsByClassName('searchbox')[0].value = '';
     setFiltro(event.target.value);
@@ -106,24 +106,24 @@ const SearchBox = ({
           >
             Taller {type === 'workshop' ? ` (${count})` : ''}
           </button>
-          <button
-            className={type === 'budget' ? 'selected' : ''}
-            onClick={() => {
-              handleType('budget');
-              // fetchRepairsWorkshop();
-            }}
-          >
-            Presupuesto {type === 'budget' ? ` (${count})` : ''}
-          </button>
-          <button
-            className={type === 'repair' ? 'selected' : ''}
-            onClick={() => {
-              handleType('repair');
-              // fetchRepairsWorkshop();
-            }}
-          >
-            Reparación {type === 'repair' ? ` (${count})` : ''}
-          </button>
+          {/*<button*/}
+          {/*  className={type === 'budget' ? 'selected' : ''}*/}
+          {/*  onClick={() => {*/}
+          {/*    handleType('budget');*/}
+          {/*    // fetchRepairsWorkshop();*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  Presupuesto {type === 'budget' ? ` (${count})` : ''}*/}
+          {/*</button>*/}
+          {/*<button*/}
+          {/*  className={type === 'repair' ? 'selected' : ''}*/}
+          {/*  onClick={() => {*/}
+          {/*    handleType('repair');*/}
+          {/*    // fetchRepairsWorkshop();*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  Reparación {type === 'repair' ? ` (${count})` : ''}*/}
+          {/*</button>*/}
           <button
             className={type === 'closed' ? 'selected' : ''}
             onClick={() => {
