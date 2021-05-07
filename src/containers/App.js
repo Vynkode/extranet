@@ -87,7 +87,7 @@ class App extends Component {
         contact: user.contacto,
         fax: user.fax,
         retailer: user.distribuidor,
-        firstTime: true,
+        firstTime: user.first_time,
       },
     });
   };

@@ -34,7 +34,7 @@ const RepairList = ({ user }) => {
     setRepairs([]);
     setCount('');
     const response = await fetch(
-      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=1`,
+      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=0`,
       {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
