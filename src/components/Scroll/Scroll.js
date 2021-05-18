@@ -1,8 +1,8 @@
 import React from 'react';
+import './Scroll.css';
 
-const Scroll = (props) => {
-  // console.log('Render: Scroll');
-  return <section style={{ overflowY: 'scroll', height: '80vh', width: '100%' }}>{props.children}</section>;
+const Scroll = props => {
+  return <section id="scroll-section">{props.children}</section>;
 };
 
 export default Scroll;

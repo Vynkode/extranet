@@ -37,21 +37,13 @@ const Repairfull = ({
 
   return (
     <article className="card-full">
-      {/*<section className="process-status-outer">*/}
-      {/*  <header className="process-status-inner">*/}
-      {/*    {processStatus(process)}*/}
-      {/*  </header>*/}
-      {/*  <aside className="pdf-icon-full">*/}
-      {/*    <a>*/}
-      {/*      /!*onClick={<RepairPdf />}*!/*/}
-      {/*      <FontAwesomeIcon className="icon" icon={['fas', 'file-pdf']} />*/}
-      {/*    </a>*/}
-      {/*  </aside>*/}
-      {/*</section>*/}
       <section className="repair-info-full">
         <div className="process-status">{process}</div>
         <div className="number center">{number}</div>
-        <div className="number-customer center">Ref.: {reference}</div>
+        <div className="number-customer center">
+          <span>Su Referencia:</span>
+          <span>{reference}</span>
+        </div>
         <img className="watch center" src={noImage} alt={'repair photo'} />
         <div className="repair-type center">{warranty}</div>
         <div className="repair-type center">{warrantydate}</div>
@@ -108,7 +100,9 @@ const Repairfull = ({
                 <span className="tag">F. Presupuesto</span>
                 <span className="data">{budgetdate}</span>
                 <span className="tag">Aceptado</span>
-                <span className="data">{budgetaccept}</span>
+                <span className="data">
+                  {budgetaccept === 'No' ? 'Sí' : 'No'}
+                </span>
               </div>
             </div>
             <div className="right">

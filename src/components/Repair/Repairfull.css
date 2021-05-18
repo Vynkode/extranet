@@ -71,42 +71,6 @@
   text-align: right;
 }
 
-/* PROCESS STATUS  */
-.card-full .process-status-outer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 25px;
-  height: 100%;
-  background-color: rgba(159, 48, 48, 0.9);
-  writing-mode: tb-rl;
-}
-
-.card-full .process-status-outer .process-status-inner {
-  font-size: 1em;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  transform: scale(-1);
-  text-align: center;
-}
-
-.card-full .process-status-outer .pdf-icon-full {
-  cursor: pointer;
-  position: absolute;
-  bottom: 8%;
-  left: 50%;
-  transform: translate(-35%, 0);
-  margin: 0;
-  padding: 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2em;
-}
-
-.card-full .process-status-outer .pdf-icon-full:hover {
-  color: rgba(190, 190, 190, 0.8);
-}
-
 /* REPAIR INFO */
 .card-full .repair-info-full {
   position: relative;
@@ -138,10 +102,14 @@
 
 .card-full .repair-info-full .number-customer {
   color: rgba(155, 155, 155, 1);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+    padding: 4px 0;
 }
 
 .card-full .repair-info-full img {
-  max-height: 135px;
+  max-height: 110px;
   object-fit: contain;
   /*margin: 5px auto;*/
   flex-grow: 1;
@@ -269,8 +237,8 @@
 }
 
 .card-full .presupuesto-full .main .right .right-tag-data {
-    padding: 5px 10px 6px 0;
-    /*background-color: mediumseagreen;*/
+  padding: 5px 10px 6px 0;
+  /*background-color: mediumseagreen;*/
 }
 
 .card-full .presupuesto-full .main .right .tag,
@@ -279,8 +247,6 @@
   float: right;
   text-align: right;
 }
-
-
 
 .card-full .presupuesto-full .main .right .data {
   padding-bottom: 5px;

@@ -8,6 +8,19 @@ body {
   background: #212121; /* w3c */
 }
 
+body::-webkit-scrollbar {
+    width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #212121; /* w3c */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(159, 48, 48, 0.7);
+}
+
+
 button {
   cursor: pointer;
 }

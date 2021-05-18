@@ -27,6 +27,7 @@ const RepairList = ({ user }) => {
     const data = await response.json();
     setCount(data[0]);
     setRepairs(data[1]);
+    console.log(data);
   };
 
   const fetchRepairsWorkshop = async () => {
@@ -44,6 +45,7 @@ const RepairList = ({ user }) => {
     // console.log(json);
     setCount(json[0]);
     setRepairs(json[1]);
+    console.log(json);
   };
 
   const fetchRepairsClosed = async () => {
