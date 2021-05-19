@@ -125,7 +125,7 @@ const Repairfull = ({
             {budget === 'Sí' && !budgetdateanswer ? (
               <BudgetButton />
             ) : (
-              <div className="left"></div>
+              <div className="left"/>
             )}
             {budgetprice > 0 ? (
               <div className="right">
@@ -163,7 +163,7 @@ const Repairfull = ({
             </div>
           ) : (
             <div className="right">
-              <div className="right-tag-data"></div>
+              <div className="right-tag-data"/>
             </div>
           )}
         </div>
