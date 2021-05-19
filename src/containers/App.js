@@ -24,6 +24,7 @@ import {
   faTimes,
   faIdBadge,
   faIdCard,
+  faSyncAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
@@ -40,7 +41,8 @@ library.add(
   faInstagram,
   faFacebookSquare,
   faIdBadge,
-  faIdCard
+  faIdCard,
+  faSyncAlt
 );
 
 const initialState = {

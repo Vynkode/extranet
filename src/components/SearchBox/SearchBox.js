@@ -4,24 +4,28 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './SearchBox.css';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    color: 'white',
+    color: 'rgba(255,255,255,0.8)',
     minWidth: 130,
   },
   inputLabel: {
-    color: 'lightgray',
+    color: 'rgba(255,255,255,0.8)',
     '&.Mui-focused': {
       color: 'rgba(159, 48, 48, 0.9)',
     },
   },
   List: {
-    color: 'white',
+    color: 'rgba(255,255,255,0.8)',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  menuItem: {
+    color: 'rgba(255,255,255,0.8)',
   },
 }));
 
@@ -97,6 +101,11 @@ const SearchBox = ({
       </div>
       <div className="type-container">
         <div className="type">
+          <FontAwesomeIcon
+            onClick={() => handleType(type)}
+            icon={('fas', 'sync-alt')}
+            className="refresh-icon"
+          />
           <button
             className={type === 'workshop' ? 'selected' : ''}
             onClick={() => {
