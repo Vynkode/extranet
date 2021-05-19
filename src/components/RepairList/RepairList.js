@@ -156,6 +156,7 @@ const RepairList = ({ user }) => {
                 brand={filteredrepair.marca}
                 model={filteredrepair.modelo}
                 type={filteredrepair.tipo_aparato}
+                refmodel={filteredrepair.ref2}
                 accesories={filteredrepair.accesorios}
                 fault={filteredrepair.averia}
                 remark={filteredrepair.observaciones}

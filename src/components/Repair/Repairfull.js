@@ -14,6 +14,7 @@ const Repairfull = ({
   brand,
   model,
   type,
+  refmodel,
   accesories,
   fault,
   remark,
@@ -76,9 +77,13 @@ const Repairfull = ({
               <span className="tag">Marca</span>
               <span className="data">{brand}</span>
               <span className="tag">Modelo</span>
-              <span className="data">{model}</span>
+              <span className="data">
+                {brand === 'CASIO' ? model : refmodel}
+              </span>
               <span className="tag">Tipo</span>
-              <span className="data">{type}</span>
+              <span className="data">
+                {brand === 'CASIO' ? type : type + ' ' + model}
+              </span>
             </div>
           </div>
         </div>
