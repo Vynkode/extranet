@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import noImage from './no-image.png';
 import './Repairfull.css';
 import BudgetButton from '../Button/BudgetButton';
 
 const Repairfull = ({
+  id,
   number,
   reference,
   photo,
@@ -21,7 +22,7 @@ const Repairfull = ({
   budget,
   budgetdate,
   budgetdateanswer,
-  budgetaccept,
+  budgetreject,
   budgetrepair,
   budgetprice,
   repdate,
@@ -33,8 +34,35 @@ const Repairfull = ({
   send,
   delivered,
   process,
+  handleRepairsBudget,
 }) => {
   // console.log('Render: Repair');
+  const handleBudgetStatus = () => {
+    if (budget === 'Sí' && budgetdateanswer && budgetreject === 'No') return 1;
+    if (budget === 'Sí' && budgetdateanswer && budgetreject !== 'No') return 2;
+    return 0;
+  };
+
+  const [budgetStatus, setBudgetStatus] = useState(handleBudgetStatus);
+
+  const handleBudget = async accepted => {
+    const url = `https://extranet-backend.herokuapp.com/budget${
+      accepted ? 'accept' : 'reject'
+    }`;
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ numero: number }),
+    });
+    const data = await response.json();
+
+    if (response.status !== 200) return console.log(data);
+    handleRepairsBudget(id, accepted);
+
+    if (accepted) setBudgetStatus(1);
+    if (!accepted) setBudgetStatus(2);
+  };
 
   return (
     <article className="card-full">
@@ -106,7 +134,11 @@ const Repairfull = ({
                 <span className="data">{budgetdate}</span>
                 <span className="tag">Aceptado</span>
                 <span className="data">
-                  {budgetaccept === 'No' ? 'Sí' : 'No'}
+                  {budgetreject === 'No' && !budgetdateanswer
+                    ? '-'
+                    : budgetreject === 'No'
+                    ? 'Sí'
+                    : 'No'}
                 </span>
               </div>
             </div>
@@ -123,9 +155,17 @@ const Repairfull = ({
           </div>
           <div className="main" style={{ marginTop: '1em' }}>
             {budget === 'Sí' && !budgetdateanswer ? (
-              <BudgetButton />
+              <BudgetButton handleBudget={handleBudget} />
             ) : (
-              <div className="left"/>
+              <div className="left">
+                <div
+                  className={
+                    budgetStatus === 1 ? 'stamp is-approved' : 'stamp is-nope'
+                  }
+                >
+                  {budgetStatus === 1 ? 'Aceptado' : 'Rechazado'}
+                </div>
+              </div>
             )}
             {budgetprice > 0 ? (
               <div className="right">
@@ -163,7 +203,7 @@ const Repairfull = ({
             </div>
           ) : (
             <div className="right">
-              <div className="right-tag-data"/>
+              <div className="right-tag-data" />
             </div>
           )}
         </div>

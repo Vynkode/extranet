@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import moment from 'moment';
 import SearchBox from '../SearchBox/SearchBox';
-const Repair = lazy(() => import('../Repair/Repair'));
-const Repairfull = lazy(() => import('../Repair/Repairfull'));
 import Loading from '../Loading/Loading';
 import './RepairList.css';
+
+const Repair = lazy(() => import('../Repair/Repair'));
+const Repairfull = lazy(() => import('../Repair/Repairfull'));
 
 const RepairList = ({ user }) => {
   const [count, setCount] = useState('');
@@ -27,11 +28,9 @@ const RepairList = ({ user }) => {
     const data = await response.json();
     setCount(data[0]);
     setRepairs(data[1]);
-    console.log(data);
   };
 
   const fetchRepairsWorkshop = async () => {
-    // console.log(user);
     setRepairs([]);
     setCount('');
     const response = await fetch(
@@ -42,10 +41,8 @@ const RepairList = ({ user }) => {
       }
     );
     const json = await response.json();
-    // console.log(json);
     setCount(json[0]);
     setRepairs(json[1]);
-    console.log(json);
   };
 
   const fetchRepairsClosed = async () => {
@@ -69,17 +66,15 @@ const RepairList = ({ user }) => {
 
   const onFilterChange = event => {
     setFilteroption(event.target.value);
-    // console.log('el filtro es', filteroption);
   };
 
   const onSearchChange = event => {
     setSearchfield(event.target.value);
-    // console.log(searchfield);
   };
 
   const handleType = type => {
     if (type === 'workshop') {
-      fetchRepairsWorkshop();
+      fetchRepairs(codigo, dir, 0);
       setType(type);
     }
     if (type === 'budget') {
@@ -91,16 +86,31 @@ const RepairList = ({ user }) => {
       setType(type);
     }
     if (type === 'closed') {
-      fetchRepairsClosed();
+      fetchRepairs(codigo, dir, 8);
       setType(type);
     }
   };
 
+  const handleRepairsBudget = (id, accept) => {
+    const newRepairs = filteredrepairs.map((repair, i) => {
+      if (id !== i) return repair;
+      const changes = {
+        f_respuesta_ppto: moment().format('DD/MM/YY'),
+        procesoEstado: '',
+      };
+      if (accept) {
+        changes.procesoEstado = 'ACEPTADO';
+        return { ...repair, ...changes };
+      }
+      changes.procesoEstado = 'RECHAZADO';
+      return { ...repair, ...changes };
+    });
+    console.log(newRepairs);
+    setFilteredrepairs(newRepairs);
+  };
+
   useEffect(() => {
-    // console.log('Cargando reparaciones');
-    fetchRepairsWorkshop();
-    // console.log('Reparaciones cargadas');
-    // console.log(repairs);
+    fetchRepairs(codigo, dir, 0);
   }, []);
 
   useEffect(() => {
@@ -128,7 +138,6 @@ const RepairList = ({ user }) => {
     // console.log(filteredrepairs);
   }, [searchfield]);
 
-  // console.log('Render: RepairList');
   return (
     <div>
       <SearchBox
@@ -147,6 +156,7 @@ const RepairList = ({ user }) => {
             return (
               <Repairfull
                 key={i}
+                id={i}
                 number={filteredrepair.numero}
                 reference={filteredrepair.su_referencia}
                 photo={filteredrepair.foto_entrada}
@@ -163,7 +173,7 @@ const RepairList = ({ user }) => {
                 budget={filteredrepair.presupuestar}
                 budgetdate={filteredrepair.f_presupuesto}
                 budgetdateanswer={filteredrepair.f_respuesta_ppto}
-                budgetaccept={filteredrepair.rechazado}
+                budgetreject={filteredrepair.rechazado}
                 budgetrepair={filteredrepair.presupuesto}
                 budgetprice={filteredrepair.p_liquido}
                 repdate={filteredrepair.f_reparacion}
@@ -175,6 +185,7 @@ const RepairList = ({ user }) => {
                 send={filteredrepair.agencia}
                 delivered={filteredrepair.delivered}
                 process={filteredrepair.procesoEstado}
+                handleRepairsBudget={handleRepairsBudget}
               />
             );
           })}

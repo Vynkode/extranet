@@ -1,48 +1,36 @@
 import React, { useState } from 'react';
 import './BudgetButton.css';
 
-const BudgetButton = () => {
-  const [clicked, setClicked] = useState(false);
-  const [accepted, setAccepted] = useState('');
+const BudgetButton = ({ handleBudget }) => {
+  // const handleButton = data => {
+  //   if (data === 'Aceptado') {
+  //     console.log(`You ${data} your budget`);
+  //     handleBudget(id, true);
+  //   }
+  //   if (data === 'Rechazado') {
+  //     console.log(`You ${data} your budget`);
+  //     setBudgetStatus(2);
+  //     handleBudget(false);
+  //   }
+  // };
 
-  const handleBudget = data => {
-    if (data === 'Aceptado') {
-      console.log(`You ${data} your budget`);
-      setClicked(true);
-      setAccepted(data);
-    }
-    if (data === 'Rechazado') {
-      console.log(`You ${data} your budget`);
-      setClicked(true);
-      setAccepted(data);
-    }
-  };
-
-  return !clicked ? (
+  return (
     <aside className="budget-buttons">
       <button
         value="Aceptado"
         className="budget-button accept"
-        onClick={e => handleBudget(e.target.value)}
+        onClick={() => handleBudget(true)}
       >
         Aceptar
       </button>
       <button
         value="Rechazado"
         className="budget-button reject"
-        onClick={e => handleBudget(e.target.value)}
+        onClick={() => handleBudget(false)}
       >
         Rechazar
       </button>
     </aside>
-  ) : (
-    <div
-      className={
-        accepted === 'Aceptado' ? 'stamp is-approved' : 'stamp is-nope'
-      }
-    >
-      {accepted}
-    </div>
   );
 };
 
