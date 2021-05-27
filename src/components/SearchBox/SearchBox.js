@@ -61,8 +61,6 @@ const SearchBox = ({
   //   }
   // };
 
-  // console.log('Render: Searchbox');
-
   return (
     <div className="searchbar">
       <div className="search-container">

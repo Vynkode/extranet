@@ -47,7 +47,7 @@ library.add(
 
 const initialState = {
   modalOpen: false,
-  route: 'signin',
+  route: '',
   isSignedIn: false,
   widthWindow: '',
   user: {
@@ -94,6 +94,33 @@ class App extends Component {
     });
   };
 
+  onToken = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(
+        'https://extranet-backend.herokuapp.com/signintoken',
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 401) {
+        localStorage.removeItem('token');
+        this.onRouteChange('signin');
+      }
+      const { user } = await response.json();
+      if (user.id) {
+        this.loadUser(user);
+        this.onRouteChange('repairs');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   onRouteChange = route => {
     if (route === 'signout') {
       this.setState(initialState);
@@ -116,6 +143,11 @@ class App extends Component {
   };
 
   componentDidMount() {
+    if (localStorage.getItem('token')) {
+      Promise.resolve(this.onToken());
+    } else {
+      this.onRouteChange('signin');
+    }
     this.setState({
       widthWindow:
         window.innerWidth ||
@@ -194,13 +226,7 @@ class App extends Component {
             <ResguardoPDF data={user} />
           </Scroll>
         ) : (
-          <Scroll>
-            <Signin
-              loadUser={this.loadUser}
-              width={widthWindow}
-              onRouteChange={this.onRouteChange}
-            />
-          </Scroll>
+          <Scroll />
         )}
       </div>
     );

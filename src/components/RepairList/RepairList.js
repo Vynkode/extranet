@@ -4,6 +4,8 @@ import SearchBox from '../SearchBox/SearchBox';
 import Loading from '../Loading/Loading';
 import './RepairList.css';
 
+import { fetchRepairs } from '../../utils/repair-fetch';
+
 const Repair = lazy(() => import('../Repair/Repair'));
 const Repairfull = lazy(() => import('../Repair/Repairfull'));
 
@@ -18,47 +20,17 @@ const RepairList = ({ user }) => {
   const codigo = user.id.slice(0, -2);
   const dir = user.id.slice(-2);
 
-  const fetchRepairs = async (codigo, dir, status) => {
-    setCount('');
-    setRepairs([]);
-    const response = await fetch(
-      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=${status}`,
-      { method: 'GET', headers: { 'Content-Type': 'application/json' } }
-    );
-    const data = await response.json();
-    setCount(data[0]);
-    setRepairs(data[1]);
-  };
-
-  const fetchRepairsWorkshop = async () => {
-    setRepairs([]);
-    setCount('');
-    const response = await fetch(
-      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=0`,
-      {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
-    const json = await response.json();
-    setCount(json[0]);
-    setRepairs(json[1]);
-  };
-
-  const fetchRepairsClosed = async () => {
-    setRepairs([]);
-    setCount('');
-    const response = await fetch(
-      `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=8`,
-      {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
-    const json = await response.json();
-    setCount(json[0]);
-    setRepairs(json[1]);
-  };
+  // const fetchRepairs = async (codigo, dir, status) => {
+  //   setCount('');
+  //   setRepairs([]);
+  //   const response = await fetch(
+  //     `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=${status}`,
+  //     { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+  //   );
+  //   const data = await response.json();
+  //   setCount(data[0]);
+  //   setRepairs(data[1]);
+  // };
 
   const filterInitial = value => {
     setSearchfield(value);
@@ -74,8 +46,12 @@ const RepairList = ({ user }) => {
 
   const handleType = type => {
     if (type === 'workshop') {
-      fetchRepairs(codigo, dir, 0);
-      setType(type);
+      fetchRepairs(codigo, dir, 0).then(repairs => {
+        console.log(repairs);
+        setCount(repairs[0]);
+        setRepairs(repairs[1]);
+        setType(type);
+      });
     }
     if (type === 'budget') {
       // fetchRepairsWorkshop();
@@ -86,8 +62,12 @@ const RepairList = ({ user }) => {
       setType(type);
     }
     if (type === 'closed') {
-      fetchRepairs(codigo, dir, 8);
-      setType(type);
+      fetchRepairs(codigo, dir, 8).then(repairs => {
+        console.log(repairs);
+        setCount(repairs[0]);
+        setRepairs(repairs[1]);
+        setType(type);
+      });
     }
   };
 
@@ -110,7 +90,11 @@ const RepairList = ({ user }) => {
   };
 
   useEffect(() => {
-    fetchRepairs(codigo, dir, 0);
+    fetchRepairs(codigo, dir, 0).then(repairs => {
+      console.log(repairs);
+      setCount(repairs[0]);
+      setRepairs(repairs[1]);
+    });
   }, []);
 
   useEffect(() => {
@@ -144,8 +128,6 @@ const RepairList = ({ user }) => {
         filterInitial={filterInitial}
         searchChange={onSearchChange}
         handleChange={onFilterChange}
-        fetchRepairsWorkshop={fetchRepairsWorkshop}
-        fetchRepairsClosed={fetchRepairsClosed}
         handleType={handleType}
         type={type}
         count={count}

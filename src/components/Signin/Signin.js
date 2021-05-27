@@ -37,8 +37,9 @@ const Signin = ({ loadUser, width, onRouteChange }) => {
       );
       if (response.status === 400)
         throw new Error('El usuario y/o el password no son correctos');
-      const user = await response.json();
+      const { user, token } = await response.json();
       if (user.id) {
+        localStorage.setItem('token', token);
         loadUser(user);
         onRouteChange('repairs');
       }
