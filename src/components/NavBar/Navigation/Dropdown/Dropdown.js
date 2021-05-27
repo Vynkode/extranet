@@ -8,26 +8,30 @@ const Dropdown = ({ onRouteChange, closeDropdown, toggleModal }) => {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <ul onClick={handleOpen} className={open ? 'dropdown-menu clicked' : 'dropdown-menu'}>
+    <ul
+      onClick={handleOpen}
+      className={open ? 'dropdown-menu clicked' : 'dropdown-menu'}
+    >
       <li
-        className='dropdown-link user-data'
+        className="dropdown-link user-data"
         onClick={() => {
           closeDropdown();
           toggleModal();
         }}
       >
         Mis datos
-        <FontAwesomeIcon className='user-icon' icon={['fas', 'id-card']} />
+        <FontAwesomeIcon className="user-icon" icon={['fas', 'id-card']} />
       </li>
       <li
-        className='dropdown-link signout'
+        className="dropdown-link signout"
         onClick={() => {
           onRouteChange('signout');
           closeDropdown();
+          localStorage.removeItem('token');
         }}
       >
         Salir
-        <FontAwesomeIcon className='user-icon' icon='sign-out-alt' />
+        <FontAwesomeIcon className="user-icon" icon="sign-out-alt" />
       </li>
     </ul>
   );
