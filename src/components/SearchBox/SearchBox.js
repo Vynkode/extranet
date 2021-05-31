@@ -108,34 +108,30 @@ const SearchBox = ({
             className={type === 'workshop' ? 'selected' : ''}
             onClick={() => {
               handleType('workshop');
-              // fetchRepairsWorkshop();
             }}
           >
             Taller {type === 'workshop' ? ` (${count})` : ''}
           </button>
-          {/*<button*/}
-          {/*  className={type === 'budget' ? 'selected' : ''}*/}
-          {/*  onClick={() => {*/}
-          {/*    handleType('budget');*/}
-          {/*    // fetchRepairsWorkshop();*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  Presupuesto {type === 'budget' ? ` (${count})` : ''}*/}
-          {/*</button>*/}
-          {/*<button*/}
-          {/*  className={type === 'repair' ? 'selected' : ''}*/}
-          {/*  onClick={() => {*/}
-          {/*    handleType('repair');*/}
-          {/*    // fetchRepairsWorkshop();*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  Reparación {type === 'repair' ? ` (${count})` : ''}*/}
-          {/*</button>*/}
+          <button
+            className={type === 'budget' ? 'selected' : ''}
+            onClick={() => {
+              handleType('budget');
+            }}
+          >
+            Presupuesto {type === 'budget' ? ` (${count})` : ''}
+          </button>
+          <button
+            className={type === 'material' ? 'selected' : ''}
+            onClick={() => {
+              handleType('material');
+            }}
+          >
+            Pdte Material {type === 'material' ? ` (${count})` : ''}
+          </button>
           <button
             className={type === 'closed' ? 'selected' : ''}
             onClick={() => {
               handleType('closed');
-              // fetchRepairsClosed();
             }}
           >
             Entregadas {type === 'closed' ? ` (${count})` : ''}

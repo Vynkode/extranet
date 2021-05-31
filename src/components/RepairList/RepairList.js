@@ -20,18 +20,6 @@ const RepairList = ({ user }) => {
   const codigo = user.id.slice(0, -2);
   const dir = user.id.slice(-2);
 
-  // const fetchRepairs = async (codigo, dir, status) => {
-  //   setCount('');
-  //   setRepairs([]);
-  //   const response = await fetch(
-  //     `https://extranet-backend.herokuapp.com/repairs?codigo=${codigo}&dir=${dir}&status=${status}`,
-  //     { method: 'GET', headers: { 'Content-Type': 'application/json' } }
-  //   );
-  //   const data = await response.json();
-  //   setCount(data[0]);
-  //   setRepairs(data[1]);
-  // };
-
   const filterInitial = value => {
     setSearchfield(value);
   };
@@ -46,24 +34,32 @@ const RepairList = ({ user }) => {
 
   const handleType = type => {
     if (type === 'workshop') {
+      setRepairs([]);
       fetchRepairs(codigo, dir, 0).then(repairs => {
-        console.log(repairs);
         setCount(repairs[0]);
         setRepairs(repairs[1]);
         setType(type);
       });
     }
     if (type === 'budget') {
-      // fetchRepairsWorkshop();
-      setType(type);
+      setRepairs([]);
+      fetchRepairs(codigo, dir, 2).then(repairs => {
+        setCount(repairs[0]);
+        setRepairs(repairs[1]);
+        setType(type);
+      });
     }
-    if (type === 'repair') {
-      // fetchRepairsWorkshop();
-      setType(type);
+    if (type === 'material') {
+      setRepairs([]);
+      fetchRepairs(codigo, dir, 5).then(repairs => {
+        setCount(repairs[0]);
+        setRepairs(repairs[1]);
+        setType(type);
+      });
     }
     if (type === 'closed') {
+      setRepairs([]);
       fetchRepairs(codigo, dir, 8).then(repairs => {
-        console.log(repairs);
         setCount(repairs[0]);
         setRepairs(repairs[1]);
         setType(type);
