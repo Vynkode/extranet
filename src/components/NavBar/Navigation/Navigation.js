@@ -26,43 +26,32 @@ const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
   };
 
   const onMouseClick = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
+    setDropdown(!dropdown);
   };
 
   if (isSignedIn && !user.firstTime) {
     return (
-      <nav
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        className="w-third pa2 white user"
-      >
-        <div className="user-name">{user.name}</div>
-        <FontAwesomeIcon className="user-icon" icon="user" />
-        {dropdown && (
-          <Dropdown
-            onRouteChange={onRouteChange}
-            closeDropdown={closeDropdown}
-            toggleModal={toggleModal}
-          />
-        )}
-      </nav>
+      <div className="navigation">
+        <div
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onClick={onMouseClick}
+          className="navigation-user"
+        >
+          <FontAwesomeIcon className="user-icon" icon="user" />
+          <div className="user-name">{user.name}</div>
+          {dropdown && (
+            <Dropdown
+              onRouteChange={onRouteChange}
+              closeDropdown={closeDropdown}
+              toggleModal={toggleModal}
+            />
+          )}
+        </div>
+      </div>
     );
   } else {
-    return (
-      <nav className="tl tc w-third pa2">
-        <p onClick={() => onRouteChange('signin')}>
-          <a
-            className="f4 link dim white pointer"
-            style={{ float: 'right', marginTop: '1rem', marginRight: '9rem' }}
-          ></a>
-        </p>
-        {/* <p onClick={() => onRouteChange('register')} className='f3 link dim white pa3 pointer'>Register</p> */}
-      </nav>
-    );
+    return <></>;
   }
 };
 

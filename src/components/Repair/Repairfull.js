@@ -3,43 +3,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import noImage from './no-image.png';
 import './Repairfull.css';
 import BudgetButton from '../Button/BudgetButton';
+import ModalPDF from '../Modals/ModalPDF';
 
-const Repairfull = ({
-  id,
-  number,
-  reference,
-  photo,
-  warranty,
-  warrantydate,
-  entrydate,
-  brand,
-  model,
-  type,
-  refmodel,
-  accesories,
-  fault,
-  remark,
-  budget,
-  budgetdate,
-  budgetdateanswer,
-  budgetreject,
-  budgetrepair,
-  budgetprice,
-  repdate,
-  replacementmodel,
-  repair,
-  bill,
-  delivertype,
-  delivereddate,
-  send,
-  delivered,
-  process,
-  handleRepairsBudget,
-}) => {
-  // console.log('Render: Repair');
+const Repairfull = ({ id, user, repair, handleRepairsBudget }) => {
+  const [pdfShow, setPdfShow] = useState(false);
+
   const handleBudgetStatus = () => {
-    if (budget === 'Sí' && budgetdateanswer && budgetreject === 'No') return 1;
-    if (budget === 'Sí' && budgetdateanswer && budgetreject !== 'No') return 2;
+    if (
+      repair.presupuestar === 'Sí' &&
+      repair.f_respuesta_ppto &&
+      repair.rechazado === 'No'
+    )
+      return 1;
+    if (
+      repair.presupuestar === 'Sí' &&
+      repair.f_respuesta_ppto &&
+      repair.rechazado !== 'No'
+    )
+      return 2;
     return 0;
   };
 
@@ -53,7 +34,7 @@ const Repairfull = ({
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ numero: number }),
+      body: JSON.stringify({ numero: repair.numero }),
     });
     const data = await response.json();
 
@@ -66,16 +47,33 @@ const Repairfull = ({
 
   return (
     <article className="card-full">
+      {pdfShow ? (
+        <>
+          <div onClick={() => setPdfShow(false)} className="back-drop-pdf" />
+          <ModalPDF
+            user={user}
+            repair={repair}
+            pdfShow={pdfShow}
+            setPdfShow={setPdfShow}
+          />
+        </>
+      ) : null}
+
       <section className="repair-info-full">
-        <div className="process-status">{process}</div>
-        <div className="number center">{number}</div>
+        <div className="process-status">{repair.procesoEstado}</div>
+        <div className="number center">{repair.numero}</div>
         <div className="number-customer center">
           <span>Su Referencia:</span>
-          <span>{reference}</span>
+          <span>{repair.su_referencia}</span>
         </div>
         <img className="watch center" src={noImage} alt={'repair photo'} />
-        <div className="repair-type center">{warranty}</div>
-        <div className="repair-type center">{warrantydate}</div>
+        <div className="repair-type center">{repair.tipo_reparacion}</div>
+        <div className="repair-type center">{repair.fecha_compra}</div>
+        <FontAwesomeIcon
+          onClick={() => setPdfShow(true)}
+          icon="file-pdf"
+          className="pdf-icon"
+        />
       </section>
       <section className="resguardo-full">
         <header>Resguardo</header>
@@ -83,12 +81,12 @@ const Repairfull = ({
           <div className="left">
             <div className="left-tag-data">
               <span className="tag">F. Entrada</span>
-              <span className="data">{entrydate}</span>
+              <span className="data">{repair.f_entrada}</span>
             </div>
             <ul className="left-ul-data">
               <span className="tag">Accesorios</span>
-              {accesories ? (
-                accesories.map((acc, i) => {
+              {repair.accesorios ? (
+                repair.accesorios.map((acc, i) => {
                   return (
                     <li key={i} className="data-li">
                       {acc}
@@ -103,40 +101,42 @@ const Repairfull = ({
           <div className="right">
             <div className="right-tag-data">
               <span className="tag">Marca</span>
-              <span className="data">{brand}</span>
+              <span className="data">{repair.marca}</span>
               <span className="tag">Modelo</span>
               <span className="data">
-                {brand === 'CASIO' ? model : refmodel}
+                {repair.marca === 'CASIO' ? repair.modelo : repair.ref2}
               </span>
               <span className="tag">Tipo</span>
               <span className="data">
-                {brand === 'CASIO' ? type : type + ' ' + model}
+                {repair.marca === 'CASIO'
+                  ? repair.tipo_aparato
+                  : repair.tipo_aparato + ' ' + repair.modelo}
               </span>
             </div>
           </div>
         </div>
         <div className="tag-data">
           <span className="tag left">Avería</span>
-          <span className="data-fault left">{fault}</span>
+          <span className="data-fault left">{repair.averia}</span>
         </div>
         <div className="tag-data">
           <span className="tag left">Observaciones</span>
-          <span className="data-remark left">{remark}</span>
+          <span className="data-remark left">{repair.observaciones}</span>
         </div>
       </section>
-      {process !== 1 && budget === 'Sí' ? (
+      {repair.procesoEstado !== 1 && repair.presupuestar === 'Sí' ? (
         <section className="presupuesto-full">
           <header>Prespuesto</header>
           <div className="main">
             <div className="left">
               <div className="left-tag-data">
                 <span className="tag">F. Presupuesto</span>
-                <span className="data">{budgetdate}</span>
+                <span className="data">{repair.f_presupuesto}</span>
                 <span className="tag">Aceptado</span>
                 <span className="data">
-                  {budgetreject === 'No' && !budgetdateanswer
+                  {repair.rechazado === 'No' && !repair.f_respuesta_ppto
                     ? '-'
-                    : budgetreject === 'No'
+                    : repair.rechazado === 'No'
                     ? 'Sí'
                     : 'No'}
                 </span>
@@ -145,16 +145,16 @@ const Repairfull = ({
             <div className="right">
               <div className="right-tag-data">
                 <span className="tag">F. Respuesta</span>
-                <span className="data">{budgetdateanswer}</span>
+                <span className="data">{repair.f_respuesta_ppto}</span>
               </div>
             </div>
           </div>
           <div className="tag-data">
             <span className="tag left">Presupuesto</span>
-            <span className="data-remark left">{budgetrepair}</span>
+            <span className="data-remark left">{repair.presupuesto}</span>
           </div>
           <div className="main" style={{ marginTop: '1em' }}>
-            {budget === 'Sí' && !budgetdateanswer ? (
+            {repair.presupuestar === 'Sí' && !repair.f_respuesta_ppto ? (
               <BudgetButton handleBudget={handleBudget} />
             ) : (
               <div className="left">
@@ -167,12 +167,12 @@ const Repairfull = ({
                 </div>
               </div>
             )}
-            {budgetprice > 0 ? (
+            {repair.p_liquido > 0 ? (
               <div className="right">
                 <div className="right-tag-data">
                   <span className="tag right">Precio</span>
                   <span className="data right">
-                    {budgetprice} € (IVA incl.)
+                    {repair.p_liquido} € (IVA incl.)
                   </span>
                 </div>
               </div>
@@ -191,14 +191,14 @@ const Repairfull = ({
           <div className="left">
             <div className="left-tag-data">
               <span className="tag">F. Reparación</span>
-              <span className="data">{repdate}</span>
+              <span className="data">{repair.f_reparacion}</span>
             </div>
           </div>
-          {replacementmodel ? (
+          {repair.modelo_sustutucion ? (
             <div className="right">
               <div className="right-tag-data">
                 <span className="tag">Cambio reloj</span>
-                <span className="data">{replacementmodel}</span>
+                <span className="data">{repair.modelo_sustutucion}</span>
               </div>
             </div>
           ) : (
@@ -209,12 +209,12 @@ const Repairfull = ({
         </div>
         <div className="tag-data">
           <span className="tag left">Reparación</span>
-          <span className="data-remark left">{repair}</span>
+          <span className="data-remark left">{repair.reparacion}</span>
         </div>
-        {bill > 0 ? (
+        {repair.f_liquido > 0 ? (
           <div className="tag-data">
             <span className="tag right">Precio</span>
-            <span className="data right">{bill} € (IVA incl.)</span>
+            <span className="data right">{repair.f_liquido} € (IVA incl.)</span>
           </div>
         ) : (
           <></>
@@ -226,7 +226,7 @@ const Repairfull = ({
           <div className="left">
             <div className="left-tag-data">
               <span className="tag">F. Entrega</span>
-              <span className="data">{delivereddate}</span>
+              <span className="data">{repair.f_entrega}</span>
             </div>
           </div>
           <div className="right">
@@ -242,5 +242,7 @@ const Repairfull = ({
     </article>
   );
 };
+
+// ReactDOM.render(<RepairPDF />, document.getElementById('pdf'));
 
 export default Repairfull;

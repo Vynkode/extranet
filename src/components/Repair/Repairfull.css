@@ -1,5 +1,6 @@
 /* CARD */
 .card-full {
+  position: static;
   box-sizing: border-box;
   max-width: 1400px;
   height: 230px;
@@ -105,7 +106,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.8rem;
-    padding: 4px 0;
+  padding: 4px 0;
 }
 
 .card-full .repair-info-full img {
@@ -118,6 +119,18 @@
 .card-full .repair-info-full .repair-type {
   font-weight: normal;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.card-full .repair-info-full .pdf-icon {
+  cursor: pointer;
+  position: absolute;
+  bottom: 25px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.card-full .repair-info-full .pdf-icon:hover {
+  color: rgba(159, 48, 48, 0.7);
 }
 
 /* RESGUARDO */
@@ -196,6 +209,8 @@
   padding-bottom: 5px;
 }
 
+
+
 /* PRESUPUESTO */
 .card-full .presupuesto-full {
   position: relative;
@@ -253,30 +268,30 @@
 }
 
 .stamp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(-14deg);
-    color: #555;
-    font-size: 1rem;
-    font-weight: 700;
-    border: 0.25rem solid #555;
-    text-transform: uppercase;
-    border-radius: 10px;
-    margin: 5px 0 0 20px;
-    -webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
-    -webkit-mask-size: 944px 604px;
-    mix-blend-mode: lighten;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-14deg);
+  color: #555;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 0.25rem solid #555;
+  text-transform: uppercase;
+  border-radius: 10px;
+  margin: 5px 0 0 20px;
+  -webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
+  -webkit-mask-size: 944px 604px;
+  mix-blend-mode: lighten;
 }
 
 .is-approved {
-    color: rgb(32, 116, 24);
-    border: 0.25rem solid rgb(32, 116, 24);
+  color: rgb(32, 116, 24);
+  border: 0.25rem solid rgb(32, 116, 24);
 }
 
 .is-nope {
-    color: rgba(159, 48, 48, 0.9);
-    border: 0.25rem double rgba(159, 48, 48, 0.9);
+  color: rgba(159, 48, 48, 0.9);
+  border: 0.25rem double rgba(159, 48, 48, 0.9);
 }
 
 /* REPARACION */
@@ -390,6 +405,7 @@
 .card-full .entrega-full .main .right .data {
   padding-bottom: 5px;
 }
+
 /*
 
 

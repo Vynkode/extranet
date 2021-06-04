@@ -1,17 +1,17 @@
 #scroll-section {
-    overflow-y: scroll;
-    height: 80vh;
-    width: 100%;
+  overflow-y: scroll;
+  height: 80vh;
+  width: 100%;
 }
 
 #scroll-section::-webkit-scrollbar {
-    width: 4px;
+  width: 4px;
 }
 
 #scroll-section::-webkit-scrollbar-track {
-    background: #212121; /* w3c */
+  background: #212121; /* w3c */
 }
 
 #scroll-section::-webkit-scrollbar-thumb {
-    background: rgba(159, 48, 48, 0.7);
+  background: rgba(159, 48, 48, 0.7);
 }

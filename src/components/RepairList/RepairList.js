@@ -135,34 +135,8 @@ const RepairList = ({ user }) => {
               <Repairfull
                 key={i}
                 id={i}
-                number={filteredrepair.numero}
-                reference={filteredrepair.su_referencia}
-                photo={filteredrepair.foto_entrada}
-                warranty={filteredrepair.tipo_reparacion}
-                warrantydate={filteredrepair.fecha_compra}
-                entrydate={filteredrepair.f_entrada}
-                brand={filteredrepair.marca}
-                model={filteredrepair.modelo}
-                type={filteredrepair.tipo_aparato}
-                refmodel={filteredrepair.ref2}
-                accesories={filteredrepair.accesorios}
-                fault={filteredrepair.averia}
-                remark={filteredrepair.observaciones}
-                budget={filteredrepair.presupuestar}
-                budgetdate={filteredrepair.f_presupuesto}
-                budgetdateanswer={filteredrepair.f_respuesta_ppto}
-                budgetreject={filteredrepair.rechazado}
-                budgetrepair={filteredrepair.presupuesto}
-                budgetprice={filteredrepair.p_liquido}
-                repdate={filteredrepair.f_reparacion}
-                replacementmodel={filteredrepair.modelo_sustutucion}
-                repair={filteredrepair.reparacion}
-                bill={filteredrepair.f_liquido}
-                delivertype={filteredrepair.envio}
-                delivereddate={filteredrepair.f_entrega}
-                send={filteredrepair.agencia}
-                delivered={filteredrepair.delivered}
-                process={filteredrepair.procesoEstado}
+                user={user}
+                repair={filteredrepair}
                 handleRepairsBudget={handleRepairsBudget}
               />
             );

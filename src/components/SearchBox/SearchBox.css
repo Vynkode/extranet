@@ -49,7 +49,7 @@
 .searchbar {
   position: sticky;
   position: -webkit-sticky;
-  top:0;
+  top: 0;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
@@ -84,35 +84,46 @@ input[type='search']::-webkit-search-cancel-button {
   background: red;
 }
 
-
 #scroll-section > div > div.searchbar > div.search-container > div > div {
-    color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #scroll-section > div > div.searchbar > div.search-container > div > div > svg {
-    fill: rgba(255,255,255,0.8);
+  fill: rgba(255, 255, 255, 0.8);
 }
 
-#scroll-section > div > div.searchbar > div.search-container > div > div > fieldset {
-    border-color: rgb(118, 118, 118);
-    border-radius: 15px;
+#scroll-section
+  > div
+  > div.searchbar
+  > div.search-container
+  > div
+  > div
+  > fieldset {
+  border-color: rgb(118, 118, 118);
+  border-radius: 15px;
 }
 
-#scroll-section > div > div.searchbar > div.search-container > div > div > fieldset:focus {
-    border-color: rgba(159,48,48,0.4);
+#scroll-section
+  > div
+  > div.searchbar
+  > div.search-container
+  > div
+  > div
+  > fieldset:focus {
+  border-color: rgba(159, 48, 48, 0.4);
 }
 
 /* Search by Type */
 .refresh-icon {
-    cursor: pointer;
-    font-size: 1.2em;
-    padding: 0 5px;
-    color: white;
-    transition: all 0.3s;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0 5px;
+  color: white;
+  transition: all 0.3s;
 }
 
 .refresh-icon:hover {
-    color: rgba(159,48,48,0.9)
+  color: rgba(159, 48, 48, 0.9);
 }
 
 .type button {

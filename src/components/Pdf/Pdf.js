@@ -1,48 +1,48 @@
 import React from 'react';
-import { PDFViewer, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
-// Create Styles
-const styles = StyleSheet.create({
-  page: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#ffffff',
-    color: '#000000',
-    textAlign: 'center',
-    width: '90%',
-    margin: '0 auto',
-    flexGrow: 1,
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-});
+import { pdfStyles } from './pdf-styles';
+import logo from '../../assets/img/logo.png';
 
-export const ResguardoPDF = ({ userData, repairData }) => (
-  <Document style={styles.document}>
-    <Page size='A4' style={styles.page}>
-      <View style={styles.header} fixed>
-        <Text>Resguardo</Text>
-        <Text></Text>
-      </View>
-      <View style={styles.content}></View>
-      <View style={styles.footer} fixed>
-        <Text>Section #2</Text>
-      </View>
-    </Page>
-  </Document>
-);
+import { Document, Page, View, Text, Image } from '@react-pdf/renderer';
 
-export const RepairPDF = ({ userData, repairData }) => (
-  <Document>
-    <Page></Page>
-  </Document>
-);
+const RepairPDF = ({ user, repair }) => {
+  return (
+    <Document title={repair.numero}>
+      <Page style={pdfStyles.page} orientation="landscape">
+        <View style={pdfStyles.section}>
+          <View style={pdfStyles.header}>
+            <Text style={pdfStyles.headerTitulo}>
+              Servicio Integral de Relojería MGV S.L.U
+            </Text>
+            <Text style={pdfStyles.headerTexto}>B64544620</Text>
+            <Text>C/ Jonqueres, 14 08003 Barcelona</Text>
+            <Text>info@mgvwatch.com</Text>
+          </View>
+          <Image src={logo} />
+          <View style={pdfStyles.header}>
+            <Text style={pdfStyles.headerTitulo}>{user.name}</Text>
+            <Text style={pdfStyles.headerTexto}>{user.taxID}</Text>
+            <Text>
+              `${user.street}, ${user.postalCode} ${user.city}`
+            </Text>
+            <Text>info@mgvwatch.com</Text>
+          </View>
+        </View>
+        <View style={pdfStyles.section}>
+          <Text>Resguardo</Text>
+        </View>
+        <View style={pdfStyles.section}>
+          <Text>Presupuesto</Text>
+        </View>
+        <View style={pdfStyles.section}>
+          <Text>Reparación</Text>
+        </View>
+        <View style={pdfStyles.section}>
+          <Text>Entrega</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+};
 
-export const BudgetPDF = ({ userData, repairData }) => (
-  <Document>
-    <Page></Page>
-  </Document>
-);
+export default RepairPDF;

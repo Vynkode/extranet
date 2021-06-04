@@ -1,0 +1,10 @@
+.menu-container {
+  display:flex;
+  padding: 0 10px;
+  color: white;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.2);
+}
+
+.menu-text {
+ font-size: 0.9rem;
+}

@@ -6,22 +6,24 @@
 
 .topbar {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 0.5fr 0.5fr 2fr 1fr;
   border-bottom: 1px solid rgba(211, 211, 211, 0.8);
-  height: 45px;
+  height: 60px;
+  align-items: center;
+  padding: 0 10px;
+  color: white;
+  font-size: 0.7rem;
 }
 
 .socials {
-  width: 100px;
-  padding: 10px 0 0 20px;
   text-align: left;
-  font-size: 1.5em;
 }
 
 .social-icon {
   cursor: pointer;
   color: #ffffff;
   margin-right: 12px;
+  font-size: 1.4rem;
   transition: all 0.3s linear;
 }
 
@@ -29,10 +31,28 @@
 .social-icon:focus {
   color: rgba(159, 48, 48, 0.9);
 }
-.text {
+
+#header-logo {
+  height: 3.5rem;
+}
+
+.header-text {
   color: #ffffff;
-  font-size: 11px;
   text-align: right;
   vertical-align: middle;
-  padding: 10px 10px 0 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .topbar {
+    height: 46px;
+    font-size: 0.45rem;
+  }
+
+  .social-icon {
+    font-size: 1rem;
+  }
+
+  #header-logo {
+    height: 2.5rem;
+  }
 }

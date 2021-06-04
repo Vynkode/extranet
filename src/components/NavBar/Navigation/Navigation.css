@@ -1,22 +1,39 @@
-.user {
+.navigation {
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+  padding: 0 10px;
+  height: 40px;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.2);
+}
+
+.navigation-user {
   position: relative;
-  width: auto;
+  padding: 5px 0;
   text-align: center;
-  margin-top: 35px;
-  height: 30px;
+  vertical-align: middle;
   cursor: pointer;
+  color: white;
   transition: all 0.3s linear;
 }
 
 .user-name {
   display: inline;
+  font-size: 0.9rem;
 }
 
 .user-icon {
   margin: 0 10px;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .user:hover {
   color: rgba(159, 48, 48, 0.9);
+}
+
+@media only screen and (max-width: 768px) {
+  .user-name {
+    display: none;
+  }
+  
 }

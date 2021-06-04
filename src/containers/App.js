@@ -4,9 +4,8 @@ import Scroll from '../components/Scroll/Scroll';
 import NavBar from '../components/NavBar/NavBar';
 import RepairList from '../components/RepairList/RepairList';
 import Register from '../components/Register/Register';
-import Modal from '../components/Modal/Modal';
+import Modal from '../components/Modals/Modal';
 import UpdatePassword from '../components/UpdatePassword/UpdatePassword';
-import { ResguardoPDF } from '../components/Pdf/Pdf';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faInstagram,

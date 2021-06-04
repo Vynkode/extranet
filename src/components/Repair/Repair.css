@@ -11,7 +11,8 @@
   height: 200px;
   color: #fff;
   background-color: #252525;
-  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2), -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2),
+    -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   overflow: hidden;
   position: relative;
