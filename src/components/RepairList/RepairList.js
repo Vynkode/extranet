@@ -7,9 +7,10 @@ import './RepairList.css';
 import { fetchRepairs } from '../../utils/repair-fetch';
 
 const Repair = lazy(() => import('../Repair/Repair'));
-const Repairfull = lazy(() => import('../Repair/Repairfull'));
+const Repairfull = lazy(() => import('../Repair/Repairfull/Repairfull'));
+const Repairhalf = lazy(() => import('../Repair/Repairhalf/Repairhalf'));
 
-const RepairList = ({ user }) => {
+const RepairList = ({ user, width }) => {
   const [count, setCount] = useState('');
   const [repairs, setRepairs] = useState([]);
   const [searchfield, setSearchfield] = useState('');
@@ -131,15 +132,30 @@ const RepairList = ({ user }) => {
       <div className="container">
         <Suspense fallback={<Loading />}>
           {filteredrepairs.map((filteredrepair, i) => {
-            return (
-              <Repairfull
-                key={i}
-                id={i}
-                user={user}
-                repair={filteredrepair}
-                handleRepairsBudget={handleRepairsBudget}
-              />
-            );
+            if (width >= 1400) {
+              return (
+                <Repairfull
+                  key={i}
+                  id={i}
+                  user={user}
+                  repair={filteredrepair}
+                  handleRepairsBudget={handleRepairsBudget}
+                  width={width}
+                />
+              );
+            }
+            if (width < 1400) {
+              return (
+                <Repairhalf
+                  key={i}
+                  id={i}
+                  user={user}
+                  repair={filteredrepair}
+                  handleRepairsBudget={handleRepairsBudget}
+                  width={width}
+                />
+              );
+            }
           })}
         </Suspense>
       </div>

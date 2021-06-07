@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import noImage from './no-image.png';
+import noImage from '../../../assets/img/no-image.png';
 import './Repairfull.css';
-import BudgetButton from '../Button/BudgetButton';
-import ModalPDF from '../Modals/ModalPDF';
+import BudgetButton from '../../Button/BudgetButton';
+import ModalPDF from '../../Modals/ModalPDF';
 
 const Repairfull = ({ id, user, repair, handleRepairsBudget }) => {
   const [pdfShow, setPdfShow] = useState(false);

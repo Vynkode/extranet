@@ -1,5 +1,4 @@
 import React from 'react';
-import Tabs from '../Tabs/Tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import RepairPdf from '../Pdf/Pdf';
 import './Repair.css';
