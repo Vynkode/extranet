@@ -6,7 +6,10 @@ import './RepairList.css';
 
 import { fetchRepairs } from '../../utils/repair-fetch';
 
-const Repair = lazy(() => import('../Repair/Repair'));
+const RepairPortrait = lazy(() =>
+  import('../Repair/RepairPortrait/RepairPortrait')
+);
+const Repair = lazy(() => import('../Repair/Repair/Repair'));
 const Repairfull = lazy(() => import('../Repair/Repairfull/Repairfull'));
 const Repairhalf = lazy(() => import('../Repair/Repairhalf/Repairhalf'));
 
@@ -144,9 +147,33 @@ const RepairList = ({ user, width }) => {
                 />
               );
             }
-            if (width < 1400) {
+            if (width < 1400 && width >= 860) {
               return (
                 <Repairhalf
+                  key={i}
+                  id={i}
+                  user={user}
+                  repair={filteredrepair}
+                  handleRepairsBudget={handleRepairsBudget}
+                  width={width}
+                />
+              );
+            }
+            if (width < 860 && width >= 530) {
+              return (
+                <Repair
+                  key={i}
+                  id={i}
+                  user={user}
+                  repair={filteredrepair}
+                  handleRepairsBudget={handleRepairsBudget}
+                  width={width}
+                />
+              );
+            }
+            if (width < 530) {
+              return (
+                <RepairPortrait
                   key={i}
                   id={i}
                   user={user}

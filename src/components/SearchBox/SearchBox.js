@@ -110,6 +110,7 @@ const SearchBox = ({
               handleType('workshop');
             }}
           >
+            <FontAwesomeIcon className="type-icon" icon="tools" />
             Taller {type === 'workshop' ? ` (${count})` : ''}
           </button>
           <button
@@ -118,6 +119,7 @@ const SearchBox = ({
               handleType('budget');
             }}
           >
+            <FontAwesomeIcon className="type-icon" icon="receipt" />
             Presupuesto {type === 'budget' ? ` (${count})` : ''}
           </button>
           <button
@@ -126,6 +128,7 @@ const SearchBox = ({
               handleType('material');
             }}
           >
+            <FontAwesomeIcon className="type-icon" icon="business-time" />
             Pdte Material {type === 'material' ? ` (${count})` : ''}
           </button>
           <button
@@ -134,6 +137,7 @@ const SearchBox = ({
               handleType('closed');
             }}
           >
+            <FontAwesomeIcon className="type-icon" icon="check" />
             Entregadas {type === 'closed' ? ` (${count})` : ''}
           </button>
         </div>

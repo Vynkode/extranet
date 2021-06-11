@@ -5,7 +5,7 @@
 }
 
 #scroll-section::-webkit-scrollbar {
-  width: 4px;
+  width: 10px;
 }
 
 #scroll-section::-webkit-scrollbar-track {

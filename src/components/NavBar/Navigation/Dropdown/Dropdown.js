@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Dropdown.css';
 
-const Dropdown = ({ onRouteChange, closeDropdown, toggleModal }) => {
+const Dropdown = ({ onRouteChange, closeDropdown, setShowModalUser }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(!open);
@@ -16,7 +16,7 @@ const Dropdown = ({ onRouteChange, closeDropdown, toggleModal }) => {
         className="dropdown-link user-data"
         onClick={() => {
           closeDropdown();
-          toggleModal();
+          setShowModalUser(true);
         }}
       >
         Mis datos

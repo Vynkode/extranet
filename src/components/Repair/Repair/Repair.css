@@ -1,5 +1,5 @@
 /* CARD */
-.card-half {
+.card {
   position: static;
   box-sizing: border-box;
   max-width: 800px;
@@ -10,7 +10,7 @@
   color: #fff;
   font-size: 0.8em;
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2),
-    -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
+  -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   margin: 10px 0;
   align-self: center;
@@ -19,9 +19,9 @@
 
 /* GENERAL PROPERTIES */
 
-.card-half .repair-info-half::after,
-.card-half .resguardo-half::after,
-.card-half .tab-content::after {
+.card .repair-info::after,
+.card .resguardo::after,
+.card .tab-content::after {
   content: '';
   display: block;
   position: absolute;
@@ -31,7 +31,7 @@
   border-left: 1px dashed #444444;
 }
 
-.card-half section header {
+.card section header {
   color: rgba(159, 48, 48, 0.9);
   font-size: 1.1em;
   font-weight: bold;
@@ -39,13 +39,13 @@
   padding: 10px 0 5px 0;
 }
 
-.card-half section .tag-data {
+.card section .tag-data {
   padding: 5px 10px 6px 10px;
 }
 
-.card-half section .tag-data .data,
-.card-half section .tag-data .data-fault,
-.card-half section .tag-data .data-remark {
+.card section .tag-data .data,
+.card section .tag-data .data-fault,
+.card section .tag-data .data-remark {
   width: 100%;
   font-size: 11px;
   font-weight: normal;
@@ -71,7 +71,7 @@
 }
 
 /* REPAIR INFO */
-.card-half .repair-info-half {
+.card .repair-info {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -85,7 +85,7 @@
   /*background-color: darkslateblue;*/
 }
 
-.card-half .repair-info-half .process-status {
+.card .repair-info .process-status {
   /*width: 100%;*/
   height: 9%;
   padding: 2% 0;
@@ -94,12 +94,12 @@
   margin-bottom: 5px;
 }
 
-.card-half .repair-info-half .number {
+.card .repair-info .number {
   color: rgba(159, 48, 48, 1);
   font-size: 1.1em;
 }
 
-.card-half .repair-info-half .number-customer {
+.card .repair-info .number-customer {
   color: rgba(155, 155, 155, 1);
   display: flex;
   flex-direction: column;
@@ -107,19 +107,19 @@
   padding: 4px 0;
 }
 
-.card-half .repair-info-half img {
+.card .repair-info img {
   max-height: 110px;
   object-fit: contain;
   /*margin: 5px auto;*/
   flex-grow: 1;
 }
 
-.card-half .repair-info-half .repair-type {
+.card .repair-info .repair-type {
   font-weight: normal;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.card-half .repair-info-half .pdf-icon {
+.card .repair-info .pdf-icon {
   cursor: pointer;
   position: absolute;
   bottom: 25px;
@@ -127,12 +127,12 @@
   font-size: 1rem;
 }
 
-.card-half .repair-info-half .pdf-icon:hover {
+.card .repair-info .pdf-icon:hover {
   color: rgba(159, 48, 48, 0.7);
 }
 
 /* RESGUARDO */
-.card-half .resguardo-half {
+.card .resguardo {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -141,34 +141,34 @@
   /*background-color: midnightblue;*/
 }
 
-.card-half .resguardo-half .main {
+.card .resguardo .main {
   display: flex;
   flex-direction: row;
   /*background-color: midnightblue;*/
 }
 
-.card-half .resguardo-half .main .left,
-.card-half .resguardo-half .main .right {
+.card .resguardo .main .left,
+.card .resguardo .main .right {
   /*display: flex;*/
   /*flex-direction: column;*/
   /*justify-content: space-evenly;*/
   width: 50%;
 }
 
-.card-half .resguardo-half .main .left .left-tag-data .tag,
-.card-half .resguardo-half .main .left .left-ul-data .tag,
-.card-half .resguardo-half .main .left .left-tag-data .data {
+.card .resguardo .main .left .left-tag-data .tag,
+.card .resguardo .main .left .left-ul-data .tag,
+.card .resguardo .main .left .left-tag-data .data {
   width: 100%;
   float: left;
   text-align: left;
 }
 
-.card-half .resguardo-half .main .left .left-tag-data {
+.card .resguardo .main .left .left-tag-data {
   padding: 5px 0 0 10px;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .resguardo-half .main .left .left-ul-data {
+.card .resguardo .main .left .left-ul-data {
   width: 100%;
   float: left;
   text-align: left;
@@ -177,43 +177,43 @@
   list-style: none;
 }
 
-.card-half .resguardo-half .main .left .left-ul-data .data-li {
+.card .resguardo .main .left .left-ul-data .data-li {
   width: 50%;
   display: inline-block;
   text-align: left;
   padding: 2px;
 }
 
-.card-half .resguardo-half .main .left .left-ul-data .data-li::before {
+.card .resguardo .main .left .left-ul-data .data-li::before {
   content: '\25AA';
   color: rgba(159, 48, 48, 1);
   font-size: 11px;
   padding-right: 2px;
 }
 
-.card-half .resguardo-half .main .right .right-tag-data {
+.card .resguardo .main .right .right-tag-data {
   padding: 5px 10px 6px 0;
 }
 
-.card-half .resguardo-half .main .right .tag,
-.card-half .resguardo-half .main .right .data {
+.card .resguardo .main .right .tag,
+.card .resguardo .main .right .data {
   width: 100%;
   float: right;
   text-align: right;
 }
 
-.card-half .resguardo-half .main .right .data {
+.card .resguardo .main .right .data {
   padding-bottom: 5px;
 }
 
-.card-half .tab-content {
+.card .tab-content {
   position: relative;
   width: 300px;
   font-size: 11px;
 }
 
 /* PRESUPUESTO */
-.card-half .presupuesto-half {
+.card .presupuesto {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -222,49 +222,49 @@
   /*background-color: darkolivegreen;*/
 }
 
-.card-half .presupuesto-half .main {
+.card .presupuesto .main {
   display: flex;
   flex-direction: row;
   /*background-color: midnightblue;*/
 }
 
-.card-half .presupuesto-half .main .left,
-.card-half .presupuesto-half .main .right {
+.card .presupuesto .main .left,
+.card .presupuesto .main .right {
   /*display: flex;*/
   /*flex-direction: column;*/
   /*justify-content: space-evenly;*/
   width: 50%;
 }
 
-.card-half .presupuesto-half .main .left .left-tag-data .tag,
-.card-half .presupuesto-half .main .left .left-tag-data .data {
+.card .presupuesto .main .left .left-tag-data .tag,
+.card .presupuesto .main .left .left-tag-data .data {
   width: 100%;
   float: left;
   text-align: left;
 }
 
-.card-half .presupuesto-half .main .left .left-tag-data {
+.card .presupuesto .main .left .left-tag-data {
   padding: 5px 0 0 10px;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .presupuesto-half .main .left .data {
+.card .presupuesto .main .left .data {
   padding-bottom: 5px;
 }
 
-.card-half .presupuesto-half .main .right .right-tag-data {
+.card .presupuesto .main .right .right-tag-data {
   padding: 5px 10px 6px 0;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .presupuesto-half .main .right .tag,
-.card-half .presupuesto-half .main .right .data {
+.card .presupuesto .main .right .tag,
+.card .presupuesto .main .right .data {
   width: 100%;
   float: right;
   text-align: right;
 }
 
-.card-half .presupuesto-half .main .right .data {
+.card .presupuesto .main .right .data {
   padding-bottom: 5px;
 }
 
@@ -296,7 +296,7 @@
 }
 
 /* REPARACION */
-.card-half .reparacion-half {
+.card .reparacion {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -305,54 +305,54 @@
   /*background-color: darkolivegreen;*/
 }
 
-.card-half .reparacion-half .main {
+.card .reparacion .main {
   display: flex;
   flex-direction: row;
   /*background-color: midnightblue;*/
 }
 
-.card-half .reparacion-half .main .left,
-.card-half .reparacion-half .main .right {
+.card .reparacion .main .left,
+.card .reparacion .main .right {
   /*display: flex;*/
   /*flex-direction: column;*/
   /*justify-content: space-evenly;*/
   width: 50%;
 }
 
-.card-half .reparacion-half .main .left .left-tag-data .tag,
-.card-half .reparacion-half .main .left .left-tag-data .data {
+.card .reparacion .main .left .left-tag-data .tag,
+.card .reparacion .main .left .left-tag-data .data {
   width: 100%;
   float: left;
   text-align: left;
 }
 
-.card-half .reparacion-half .main .left .left-tag-data {
+.card .reparacion .main .left .left-tag-data {
   padding: 5px 0 0 10px;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .reparacion-half .main .left .data {
+.card .reparacion .main .left .data {
   padding-bottom: 5px;
 }
 
-.card-half .reparacion-half .main .right .tag,
-.card-half .reparacion-half .main .right .data {
+.card .reparacion .main .right .tag,
+.card .reparacion .main .right .data {
   width: 100%;
   float: right;
   text-align: right;
 }
 
-.card-half .reparacion-half .main .right .right-tag-data {
+.card .reparacion .main .right .right-tag-data {
   padding: 5px 10px 6px 0;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .reparacion-half .main .right .data {
+.card .reparacion .main .right .data {
   padding-bottom: 5px;
 }
 
 /* ENTREGA */
-.card-half .entrega-half {
+.card .entrega {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -361,54 +361,54 @@
   /*background-color: darkolivegreen;*/
 }
 
-.card-half .entrega-half .main {
+.card .entrega .main {
   display: flex;
   flex-direction: row;
   /*background-color: midnightblue;*/
 }
 
-.card-half .entrega-half .main .left,
-.card-half .entrega-half .main .right {
+.card .entrega .main .left,
+.card .entrega .main .right {
   /*display: flex;*/
   /*flex-direction: column;*/
   /*justify-content: space-evenly;*/
   width: 50%;
 }
 
-.card-half .entrega-half .main .left .left-tag-data .tag,
-.card-half .entrega-half .main .left .left-tag-data .data {
+.card .entrega .main .left .left-tag-data .tag,
+.card .entrega .main .left .left-tag-data .data {
   width: 100%;
   float: left;
   text-align: left;
 }
 
-.card-half .entrega-half .main .left .left-tag-data {
+.card .entrega .main .left .left-tag-data {
   padding: 5px 0 0 10px;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .entrega-half .main .left .data {
+.card .entrega .main .left .data {
   padding-bottom: 5px;
 }
 
-.card-half .entrega-half .main .right .tag,
-.card-half .entrega-half .main .right .data {
+.card .entrega .main .right .tag,
+.card .entrega .main .right .data {
   width: 100%;
   float: right;
   text-align: right;
 }
 
-.card-half .entrega-half .main .right .right-tag-data {
+.card .entrega .main .right .right-tag-data {
   padding: 5px 10px 6px 0;
   /*background-color: mediumseagreen;*/
 }
 
-.card-half .entrega-half .main .right .data {
+.card .entrega .main .right .data {
   padding-bottom: 5px;
 }
 
 /* Tabs */
-.card-half .tabs-wrapper {
+.card .tabs-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -417,7 +417,7 @@
   height: 230px;
 }
 
-.tab-btn {
+.card .tab-btn {
   cursor: pointer;
   flex: 1;
   display: flex;
@@ -428,26 +428,26 @@
   transition: all 400ms linear;
 }
 
-.tab-btn .tab-icon {
+.card .tab-btn .tab-icon {
   transition: all 300ms linear;
 }
 
-.tab-btn.disabled {
+.card .tab-btn.disabled {
   pointer-events: none;
   color: rgba(255, 255, 255, 0.2);
 }
 
-.tab-btn:hover .tab-icon {
+.card .tab-btn:hover .tab-icon {
   color: rgba(255, 255, 255, 1);
 }
 
-.tab-btn.active {
+.card .tab-btn.active {
   position: relative;
   background-color: rgba(159, 48, 48, 0.9);
   color: rgba(255, 255, 255, 1);
 }
 
-.tab-btn.active::before {
+.card .tab-btn.active::before {
   content: '';
   position: absolute;
   top: 0;
@@ -457,6 +457,6 @@
   border-left: 1px solid rgba(159, 48, 48, 0.9);
 }
 
-.tab-btn.active:hover .tab-icon {
+.card .tab-btn.active:hover .tab-icon {
   color: white;
 }

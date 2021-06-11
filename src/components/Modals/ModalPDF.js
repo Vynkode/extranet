@@ -15,7 +15,7 @@ import logo from '../../assets/img/logo-pdf.png';
 
 const ModalPDF = ({ user, repair, pdfShow, setPdfShow }) => {
   return (
-    <div className={pdfShow ? 'modal-wrapper-pdf show' : 'modal-wrapper-pdf'}>
+    <div className="modal-wrapper-pdf">
       <div className="modal-header-pdf">
         <p>{`Reparación ${repair.numero}`}</p>
         <FontAwesomeIcon

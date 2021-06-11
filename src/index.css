@@ -6,6 +6,7 @@ body {
   padding: 0;
   font-family: 'Roboto Slab', serif;
   background: #2E2C2C; /* w3c */
+  overflow-y: hidden;
 }
 
 body::-webkit-scrollbar {

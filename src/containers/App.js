@@ -4,8 +4,8 @@ import Scroll from '../components/Scroll/Scroll';
 import NavBar from '../components/NavBar/NavBar';
 import RepairList from '../components/RepairList/RepairList';
 import Register from '../components/Register/Register';
-import Modal from '../components/Modals/Modal';
 import UpdatePassword from '../components/UpdatePassword/UpdatePassword';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faInstagram,
@@ -24,7 +24,9 @@ import {
   faIdBadge,
   faIdCard,
   faSyncAlt,
+  faBusinessTime,
 } from '@fortawesome/free-solid-svg-icons';
+
 import './App.css';
 
 library.add(
@@ -41,7 +43,8 @@ library.add(
   faFacebookSquare,
   faIdBadge,
   faIdCard,
-  faSyncAlt
+  faSyncAlt,
+  faBusinessTime
 );
 
 const initialState = {
@@ -130,14 +133,6 @@ class App extends Component {
     this.setState({ route: route });
   };
 
-  toggleModal = () => {
-    if (this.state.modalOpen) {
-      this.setState({ modalOpen: false });
-    } else {
-      this.setState({ modalOpen: true });
-    }
-  };
-
   handleChangePassword = data => {
     this.setState({ user: { ...data, firstTime: false } });
   };
@@ -179,11 +174,6 @@ class App extends Component {
     const { isSignedIn, user, route, modalOpen, widthWindow } = this.state;
     return (
       <div className="App">
-        {modalOpen ? (
-          <div onClick={this.toggleModal} className="back-drop" />
-        ) : null}
-        <Modal data={user} close={this.toggleModal} show={modalOpen} />
-
         <NavBar
           isSignedIn={isSignedIn}
           width={widthWindow}

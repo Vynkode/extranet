@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navigation.css';
 import Dropdown from './Dropdown/Dropdown';
-// import Modal from '../../Modal/Modal';
+import ModalUser from '../../Modals/ModalUser';
 
-const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
+const Navigation = ({ onRouteChange, isSignedIn, user }) => {
+  const [showModalUser, setShowModelUser] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   const onMouseEnter = () => {
@@ -32,6 +33,17 @@ const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
   if (isSignedIn && !user.firstTime) {
     return (
       <div className="navigation">
+        {showModalUser ? (
+          <>
+            <div
+              onClick={() => setShowModelUser(false)}
+              className="back-drop"
+            />
+            <ModalUser setShowModalUser={setShowModelUser} user={user} />
+          </>
+        ) : (
+          <></>
+        )}
         <div
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -44,7 +56,7 @@ const Navigation = ({ onRouteChange, isSignedIn, user, toggleModal }) => {
             <Dropdown
               onRouteChange={onRouteChange}
               closeDropdown={closeDropdown}
-              toggleModal={toggleModal}
+              setShowModalUser={setShowModelUser}
             />
           )}
         </div>
