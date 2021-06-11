@@ -33,15 +33,12 @@ const SearchBox = ({
   filterInitial,
   searchChange,
   handleChange,
-  fetchRepairsWorkshop,
-  fetchRepairsClosed,
   handleType,
   type,
   count,
 }) => {
   const classes = useStyles();
   const [filtro, setFiltro] = React.useState(1);
-  // const [type, setType] = React.useState('workshop');
 
   const handleSelect = event => {
     filterInitial('');
@@ -50,16 +47,6 @@ const SearchBox = ({
     console.log(filtro);
     handleChange(event);
   };
-
-  // const handleType = (type) => {
-  //   if (type === 'closed') {
-  //     fetchRepairsClosed();
-  //     setType(type);
-  //   } else if (type === 'workshop') {
-  //     fetchRepairsWorkshop();
-  //     setType(type);
-  //   }
-  // };
 
   return (
     <div className="searchbar">
@@ -101,7 +88,7 @@ const SearchBox = ({
         <div className="type">
           <FontAwesomeIcon
             onClick={() => handleType(type)}
-            icon={('fas', 'sync-alt')}
+            icon="sync-alt"
             className="refresh-icon"
           />
           <button

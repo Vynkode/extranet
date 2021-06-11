@@ -10,10 +10,11 @@
 .navigation-user {
   position: relative;
   padding: 5px 0;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
   cursor: pointer;
   color: white;
+  min-width: 230px;
   transition: all 0.3s linear;
 }
 
