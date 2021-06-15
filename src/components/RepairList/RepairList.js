@@ -131,6 +131,7 @@ const RepairList = ({ user, width }) => {
         handleType={handleType}
         type={type}
         count={count}
+        width={width}
       />
       <div className="container">
         <Suspense fallback={<Loading />}>

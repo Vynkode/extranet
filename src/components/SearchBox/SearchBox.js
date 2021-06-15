@@ -36,6 +36,7 @@ const SearchBox = ({
   handleType,
   type,
   count,
+  width,
 }) => {
   const classes = useStyles();
   const [filtro, setFiltro] = React.useState(1);
@@ -98,7 +99,11 @@ const SearchBox = ({
             }}
           >
             <FontAwesomeIcon className="type-icon" icon="tools" />
-            Taller {type === 'workshop' ? ` (${count})` : ''}
+            {`${
+              width > 1100
+                ? `Taller ${type === 'workshop' ? ` (${count})` : ''}`
+                : ''
+            } `}
           </button>
           <button
             className={type === 'budget' ? 'selected' : ''}
@@ -107,7 +112,10 @@ const SearchBox = ({
             }}
           >
             <FontAwesomeIcon className="type-icon" icon="receipt" />
-            Presupuesto {type === 'budget' ? ` (${count})` : ''}
+
+            {width > 1100
+              ? `Presupuesto ${type === 'budget' ? ` (${count})` : ''}`
+              : ''}
           </button>
           <button
             className={type === 'material' ? 'selected' : ''}
@@ -115,8 +123,10 @@ const SearchBox = ({
               handleType('material');
             }}
           >
-            <FontAwesomeIcon className="type-icon" icon="business-time" />
-            Pdte Material {type === 'material' ? ` (${count})` : ''}
+            <FontAwesomeIcon className="type-icon" icon="business-time" />{' '}
+            {width > 1100
+              ? `Pdte Material ${type === 'material' ? ` (${count})` : ''}`
+              : ''}
           </button>
           <button
             className={type === 'closed' ? 'selected' : ''}
@@ -125,7 +135,9 @@ const SearchBox = ({
             }}
           >
             <FontAwesomeIcon className="type-icon" icon="check" />
-            Entregadas {type === 'closed' ? ` (${count})` : ''}
+            {width > 1100
+              ? `Entregadas ${type === 'closed' ? ` (${count})` : ''}`
+              : ''}
           </button>
         </div>
       </div>
