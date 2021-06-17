@@ -90,21 +90,21 @@ const RepairList = ({ user, width }) => {
   };
 
   useEffect(() => {
-    fetchRepairs(codigo, dir, 0).then(repairs => {
-      console.log(repairs);
-      setCount(repairs[0]);
-      setRepairs(repairs[1]);
-    });
+    console.log(repairs.length);
+    if (repairs.length < 1) {
+      fetchRepairs(codigo, dir, 0).then(repairs => {
+        console.log(repairs);
+        setCount(repairs[0]);
+        setRepairs(repairs[1]);
+      });
+    }
   }, []);
 
   useEffect(() => {
-    // console.log('Cargando filtros');
     setFilteredrepairs(repairs);
-    // console.log('Filtro cargado');
   }, [repairs]);
 
   useEffect(() => {
-    // console.log('Filtrando');
     const results = repairs.filter(repair => {
       if (filteroption === 1) {
         return repair.numero.toString().includes(searchfield);
@@ -119,7 +119,6 @@ const RepairList = ({ user, width }) => {
       }
     });
     setFilteredrepairs(results);
-    // console.log(filteredrepairs);
   }, [searchfield]);
 
   return (

@@ -51,7 +51,10 @@ const initialState = {
   modalOpen: false,
   route: '',
   isSignedIn: false,
-  widthWindow: '',
+  widthWindow:
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth,
   user: {
     id: '',
     name: '',
@@ -143,12 +146,6 @@ class App extends Component {
     } else {
       this.onRouteChange('signin');
     }
-    this.setState({
-      widthWindow:
-        window.innerWidth ||
-        document.documentElement.clientWidth ||
-        document.body.clientWidth,
-    });
     window.addEventListener('resize', () => {
       this.setState({
         widthWindow:
@@ -160,6 +157,9 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    this.setState({
+      widthWindow: 0,
+    });
     window.removeEventListener('resize', () => {
       this.setState({
         widthWindow:
