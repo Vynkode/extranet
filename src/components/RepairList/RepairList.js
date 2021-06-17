@@ -90,7 +90,6 @@ const RepairList = ({ user, width }) => {
   };
 
   useEffect(() => {
-    console.log(repairs.length);
     if (repairs.length < 1) {
       fetchRepairs(codigo, dir, 0).then(repairs => {
         console.log(repairs);
