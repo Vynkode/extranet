@@ -25,6 +25,7 @@ import {
   faIdCard,
   faSyncAlt,
   faBusinessTime,
+  faFileDownload,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
@@ -44,7 +45,8 @@ library.add(
   faIdBadge,
   faIdCard,
   faSyncAlt,
-  faBusinessTime
+  faBusinessTime,
+  faFileDownload
 );
 
 const initialState = {

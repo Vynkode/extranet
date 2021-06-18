@@ -6,12 +6,14 @@ import noImage from '../../../assets/img/no-image.png';
 import './RepairPortrait.css';
 import BudgetButton from '../../Button/BudgetButton';
 import PDF from '../../Pdf/Pdf';
+import DownloadPdf from '../../Pdf/downloadPdf';
 
 const Repair = ({ id, user, repair, handleRepairsBudget }) => {
   const [activeTab, setActiveTab] = useState('resguardo');
-  const [instance, updateInstance] = usePDF({
-    document: PDF({ user, repair }),
-  });
+  const [pdf, setPdf] = useState(false);
+  // const [instance, updateInstance] = usePDF({
+  //   document: PDF({ user, repair }),
+  // });
 
   const handleBudgetStatus = () => {
     if (
@@ -63,15 +65,15 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
             </div>
             <div className="repair-type center">{repair.tipo_reparacion}</div>
             <div className="repair-type center">{repair.fecha_compra}</div>
-            <FontAwesomeIcon
-              icon="file-pdf"
-              className="pdf-icon"
-              onClick={() => {
-                // updateInstance({ document: PDF({ user, repair }) });
-                window.open(instance.url);
-                console.log(instance);
-              }}
-            />
+            {!pdf ? (
+              <FontAwesomeIcon
+                icon="file-pdf"
+                className="pdf-icon"
+                onClick={() => setPdf(true)}
+              />
+            ) : (
+              <DownloadPdf user={user} repair={repair} />
+            )}
             {/*<PDFDownloadLink*/}
             {/*  document={<PDF user={user} repair={repair} />}*/}
             {/*  fileName={`MGWatch_${repair.numero}`}*/}
