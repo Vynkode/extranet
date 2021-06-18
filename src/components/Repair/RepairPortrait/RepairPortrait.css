@@ -471,3 +471,17 @@
 .card-portrait a {
   color: inherit;
 }
+
+.card-portrait .pdf-download {
+  display: none;
+  color: rgba(159,48,48,0.9);
+  background-color: white;
+  border: 1px solid rgba(159,48,48,0.9);
+  border-radius: 15px;
+  padding: 0.2rem 0.3rem;
+}
+
+.card-portrait .pdf-download.show {
+  display: inline-block;
+
+}

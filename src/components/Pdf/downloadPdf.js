@@ -3,7 +3,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PDF from './Pdf';
 
-const DownloadPdf = ({ user, repair }) => (
+const DownloadPdf = ({ user, repair, setPdfDownload }) => (
   <div>
     <PDFDownloadLink
       document={<PDF user={user} repair={repair} />}
@@ -13,7 +13,16 @@ const DownloadPdf = ({ user, repair }) => (
         loading ? (
           <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />
         ) : (
-          <FontAwesomeIcon icon="file-download" className="pdf-icon" />
+          <FontAwesomeIcon
+            icon="file-download"
+            className="pdf-icon"
+            onClick={() => {
+              setPdfDownload(true);
+              setTimeout(() => {
+                setPdfDownload(false);
+              }, 1000);
+            }}
+          />
         )
       }
     </PDFDownloadLink>

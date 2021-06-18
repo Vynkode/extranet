@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { usePDF, PDFDownloadLink } from '@react-pdf/renderer';
 
 import noImage from '../../../assets/img/no-image.png';
 import './RepairPortrait.css';
 import BudgetButton from '../../Button/BudgetButton';
-import PDF from '../../Pdf/Pdf';
 import DownloadPdf from '../../Pdf/downloadPdf';
 
 const Repair = ({ id, user, repair, handleRepairsBudget }) => {
   const [activeTab, setActiveTab] = useState('resguardo');
   const [pdf, setPdf] = useState(false);
-  // const [instance, updateInstance] = usePDF({
-  //   document: PDF({ user, repair }),
-  // });
+  const [pdfDownload, setPdfDownload] = useState(false);
 
   const handleBudgetStatus = () => {
     if (
@@ -72,29 +68,15 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
                 onClick={() => setPdf(true)}
               />
             ) : (
-              <DownloadPdf user={user} repair={repair} />
+              <DownloadPdf
+                user={user}
+                repair={repair}
+                setPdfDownload={setPdfDownload}
+              />
             )}
-            {/*<PDFDownloadLink*/}
-            {/*  document={<PDF user={user} repair={repair} />}*/}
-            {/*  fileName={`MGWatch_${repair.numero}`}*/}
-            {/*>*/}
-            {/*  {({ blob, url, loading, error }) =>*/}
-            {/*    loading ? (*/}
-            {/*      <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />*/}
-            {/*    ) : (*/}
-            {/*      <FontAwesomeIcon icon="file-pdf" className="pdf-icon" />*/}
-            {/*    )*/}
-            {/*  }*/}
-            {/*</PDFDownloadLink>*/}
-            {/*{pdfInstance.loading ? (*/}
-            {/*  <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />*/}
-            {/*) : pdfInstance.error ? (*/}
-            {/*  ''*/}
-            {/*) : (*/}
-            {/*  <a href={pdfInstance.url} download={`MGVWatch_${repair.numero}`}>*/}
-            {/*    <FontAwesomeIcon icon="file-pdf" className="pdf-icon" />*/}
-            {/*  </a>*/}
-            {/*)}*/}
+            <div className={pdfDownload ? 'pdf-download show' : 'pdf-download'}>
+              Descargado
+            </div>
           </div>
           <img className="watch center" src={noImage} alt={'repair photo'} />
         </div>
