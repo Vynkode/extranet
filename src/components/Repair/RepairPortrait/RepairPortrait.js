@@ -9,7 +9,7 @@ import PDF from '../../Pdf/Pdf';
 
 const Repair = ({ id, user, repair, handleRepairsBudget }) => {
   const [activeTab, setActiveTab] = useState('resguardo');
-  const [pdfInstance, setPdfInstance] = usePDF({
+  const [instance, updateInstance] = usePDF({
     document: PDF({ user, repair }),
   });
 
@@ -63,18 +63,27 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
             </div>
             <div className="repair-type center">{repair.tipo_reparacion}</div>
             <div className="repair-type center">{repair.fecha_compra}</div>
-            <PDFDownloadLink
-              document={<PDF user={user} repair={repair} />}
-              fileName={`MGWatch_${repair.numero}`}
-            >
-              {({ blob, url, loading, error }) =>
-                loading ? (
-                  <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />
-                ) : (
-                  <FontAwesomeIcon icon="file-pdf" className="pdf-icon" />
-                )
-              }
-            </PDFDownloadLink>
+            <FontAwesomeIcon
+              icon="file-pdf"
+              className="pdf-icon"
+              onClick={() => {
+                // updateInstance({ document: PDF({ user, repair }) });
+                window.open(instance.url);
+                console.log(instance);
+              }}
+            />
+            {/*<PDFDownloadLink*/}
+            {/*  document={<PDF user={user} repair={repair} />}*/}
+            {/*  fileName={`MGWatch_${repair.numero}`}*/}
+            {/*>*/}
+            {/*  {({ blob, url, loading, error }) =>*/}
+            {/*    loading ? (*/}
+            {/*      <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />*/}
+            {/*    ) : (*/}
+            {/*      <FontAwesomeIcon icon="file-pdf" className="pdf-icon" />*/}
+            {/*    )*/}
+            {/*  }*/}
+            {/*</PDFDownloadLink>*/}
             {/*{pdfInstance.loading ? (*/}
             {/*  <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />*/}
             {/*) : pdfInstance.error ? (*/}
