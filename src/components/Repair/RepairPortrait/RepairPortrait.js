@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { usePDF } from '@react-pdf/renderer';
+
 import noImage from '../../../assets/img/no-image.png';
 import './RepairPortrait.css';
 import BudgetButton from '../../Button/BudgetButton';
-import ModalPDF from '../../Modals/ModalPDF';
+import PDF from '../../Pdf/Pdf';
 
 const Repair = ({ id, user, repair, handleRepairsBudget }) => {
-  const [pdfShow, setPdfShow] = useState(false);
   const [activeTab, setActiveTab] = useState('resguardo');
+  const [pdfInstance, setPdfInstance] = usePDF({
+    document: PDF({ user, repair }),
+  });
 
   const handleBudgetStatus = () => {
     if (
@@ -48,18 +52,6 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
 
   return (
     <article className="card-portrait">
-      {pdfShow ? (
-        <>
-          <div onClick={() => setPdfShow(false)} className="back-drop-pdf" />
-          <ModalPDF
-            user={user}
-            repair={repair}
-            pdfShow={pdfShow}
-            setPdfShow={setPdfShow}
-          />
-        </>
-      ) : null}
-
       <section className="repair-info">
         <div className="process-status">{repair.procesoEstado}</div>
         <div className="repair-info-portrait">
@@ -71,11 +63,15 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
             </div>
             <div className="repair-type center">{repair.tipo_reparacion}</div>
             <div className="repair-type center">{repair.fecha_compra}</div>
-            <FontAwesomeIcon
-              onClick={() => setPdfShow(true)}
-              icon="file-pdf"
-              className="pdf-icon"
-            />
+            {pdfInstance.loading ? (
+              <FontAwesomeIcon icon="spinner" pulse className="pdf-icon" />
+            ) : pdfInstance.error ? (
+              ''
+            ) : (
+              <a href={pdfInstance.url} download={`MGVWatch_${repair.numero}`}>
+                <FontAwesomeIcon icon="file-pdf" className="pdf-icon" />
+              </a>
+            )}
           </div>
           <img className="watch center" src={noImage} alt={'repair photo'} />
         </div>

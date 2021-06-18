@@ -467,3 +467,7 @@
 .card-portrait .tab-btn.active:hover .tab-icon {
   color: white;
 }
+
+.card-portrait a {
+  color: inherit;
+}

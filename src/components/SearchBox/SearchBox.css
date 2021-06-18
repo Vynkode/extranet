@@ -189,5 +189,22 @@ input[type='search']::-webkit-search-cancel-button {
 @media screen and (max-width: 650px) {
   .searchbar {
     flex-direction: column;
+    padding: 1rem 1rem 0 1rem;
+  }
+
+  .MuiOutlinedInput-input {
+    padding: 10px 0 !important;
+  }
+
+  .MuiSelect-outlined.MuiSelect-outlined{
+    padding-right: 20px !important;
+  }
+
+  .searchbox {
+    width: 120px;
+  }
+
+  .refresh-icon {
+    top: 80%;
   }
 }
