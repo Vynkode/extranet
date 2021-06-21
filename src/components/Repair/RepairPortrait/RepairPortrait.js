@@ -5,6 +5,7 @@ import noImage from '../../../assets/img/no-image.png';
 import './RepairPortrait.css';
 import BudgetButton from '../../Button/BudgetButton';
 import DownloadPdf from '../../Pdf/downloadPdf';
+import MailtoButton from '../../Button/MailtoButton';
 
 const Repair = ({ id, user, repair, handleRepairsBudget }) => {
   const [activeTab, setActiveTab] = useState('resguardo');
@@ -51,7 +52,11 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
   return (
     <article className="card-portrait">
       <section className="repair-info">
-        <div className="process-status">{repair.procesoEstado}</div>
+        <div className="process-status">
+          {repair.procesoEstado}
+          <MailtoButton repair={repair.numero} />
+          fc
+        </div>
         <div className="repair-info-portrait">
           <div className="repair-info-data">
             <div className="number center">{repair.numero}</div>

@@ -4,6 +4,7 @@ import noImage from '../../../assets/img/no-image.png';
 import './Repairhalf.css';
 import BudgetButton from '../../Button/BudgetButton';
 import ModalPDF from '../../Modals/ModalPDF';
+import MailtoButton from '../../Button/MailtoButton';
 
 const Repairhalf = ({ id, user, repair, handleRepairsBudget }) => {
   const [pdfShow, setPdfShow] = useState(false);
@@ -67,7 +68,10 @@ const Repairhalf = ({ id, user, repair, handleRepairsBudget }) => {
       ) : null}
 
       <section className="repair-info-half">
-        <div className="process-status">{repair.procesoEstado}</div>
+        <div className="process-status">
+          {repair.procesoEstado}
+          <MailtoButton repair={repair.numero} />
+        </div>
         <div className="number center">{repair.numero}</div>
         <div className="number-customer center">
           <span>Su Referencia:</span>

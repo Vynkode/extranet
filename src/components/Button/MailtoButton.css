@@ -1,0 +1,10 @@
+.mailto-icon {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  color: white;
+}
+
+.mailto-icon:hover {
+  color: rgba(255,255,255,0.5);
+}
