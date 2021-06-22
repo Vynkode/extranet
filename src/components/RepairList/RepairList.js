@@ -108,9 +108,14 @@ const RepairList = ({ user, width }) => {
       if (filteroption === 1) {
         return repair.numero.toString().includes(searchfield);
       } else if (filteroption === 2) {
-        return repair.su_referencia.toString().includes(searchfield);
+        return repair.su_referencia?.toString().includes(searchfield);
       } else if (filteroption === 3) {
-        return repair.modelo.toLowerCase().includes(searchfield.toLowerCase());
+        if (repair.marca === 'CASIO') {
+          return repair.modelo
+            .toLowerCase()
+            .includes(searchfield.toLowerCase());
+        }
+        return repair.ref2?.toLowerCase().includes(searchfield.toLowerCase());
       } else if (filteroption === 4) {
         return repair.f_entrada.includes(
           moment(searchfield).format('DD/MM/YY')
