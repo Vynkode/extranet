@@ -55,7 +55,6 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
         <div className="process-status">
           {repair.procesoEstado}
           <MailtoButton repair={repair.numero} />
-          fc
         </div>
         <div className="repair-info-portrait">
           <div className="repair-info-data">
