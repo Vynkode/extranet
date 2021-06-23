@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navigation.css';
 import Dropdown from './Dropdown/Dropdown';
-import ModalUser from '../../Modals/ModalUser';
+import ModalUser from '../../Modals/User/ModalUser';
 
 const Navigation = ({ onRouteChange, isSignedIn, user }) => {
   const [showModalUser, setShowModelUser] = useState(false);

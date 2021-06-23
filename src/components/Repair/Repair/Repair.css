@@ -119,17 +119,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-.card .repair-info .pdf-icon {
-  cursor: pointer;
-  position: absolute;
-  bottom: 25px;
-  left: 10px;
-  font-size: 1rem;
-}
-
-.card .repair-info .pdf-icon:hover {
-  color: rgba(159, 48, 48, 0.7);
-}
 
 /* RESGUARDO */
 .card .resguardo {

@@ -1,11 +1,9 @@
 import React from 'react';
 import { PDFViewer } from '@react-pdf/renderer';
-import PDF from '../Pdf/Pdf';
+import PDF from '../../Pdf/Pdf';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './ModalPDF.css';
-import { pdfStyles } from './pdf-styles';
-// import logo from '../../assets/img/logo-pdf.png';
 
 const ModalPDF = ({ user, repair, pdfShow, setPdfShow }) => {
   return (

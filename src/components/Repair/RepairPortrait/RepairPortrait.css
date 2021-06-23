@@ -129,18 +129,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-.card-portrait .repair-info .repair-info-portrait .repair-info-data .pdf-icon {
-  cursor: pointer;
-  position: absolute;
-  bottom: 15px;
-  left: 10px;
-  font-size: 1rem;
-}
-
-.card-portrait .repair-info .repair-info-portrait .repair-info-data .pdf-icon:hover {
-  color: rgba(159, 48, 48, 0.7);
-}
-
 .card-portrait .repair-info .repair-info-portrait img {
   max-height: 100px;
   object-fit: contain;
@@ -483,5 +471,4 @@
 
 .card-portrait .pdf-download.show {
   display: inline-block;
-
 }

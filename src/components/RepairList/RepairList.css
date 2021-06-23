@@ -7,3 +7,33 @@
   justify-content: space-between;
   padding: 1rem 0;
 }
+
+.comment-icon {
+  cursor: pointer;
+  position: absolute;
+  left: 8px;
+  bottom: 40px;
+  font-size: 1rem;
+}
+
+.comment-icon:hover {
+  color: rgba(255,255,255,0.5);
+}
+
+.pdf-icon {
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.pdf-icon:hover {
+  color: rgba(255,255,255,0.5);
+}
+
+/*@media only screen and (max-width: 530px ) {*/
+/*  .comment-icon {*/
+/*    right: 1rem;*/
+/*  }*/
+/*}*/

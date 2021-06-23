@@ -119,17 +119,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-.card-half .repair-info-half .pdf-icon {
-  cursor: pointer;
-  position: absolute;
-  bottom: 25px;
-  left: 10px;
-  font-size: 1rem;
-}
-
-.card-half .repair-info-half .pdf-icon:hover {
-  color: rgba(159, 48, 48, 0.7);
-}
 
 /* RESGUARDO */
 .card-half .resguardo-half {

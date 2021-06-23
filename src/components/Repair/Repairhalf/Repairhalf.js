@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import noImage from '../../../assets/img/no-image.png';
 import './Repairhalf.css';
 import BudgetButton from '../../Button/BudgetButton';
-import ModalPDF from '../../Modals/ModalPDF';
+import ModalPDF from '../../Modals/PDF/ModalPDF';
 import MailtoButton from '../../Button/MailtoButton';
+import CommentsModal from '../../Modals/Comments/CommentsModal';
 
 const Repairhalf = ({ id, user, repair, handleRepairsBudget }) => {
   const [pdfShow, setPdfShow] = useState(false);
   const [activeTab, setActiveTab] = useState('');
+  const [commentShow, setCommentShow] = useState(false);
 
   const handleBudgetStatus = () => {
     if (
@@ -67,10 +69,29 @@ const Repairhalf = ({ id, user, repair, handleRepairsBudget }) => {
         </>
       ) : null}
 
+      {commentShow ? (
+        <>
+          <div
+            onClick={() => setCommentShow(false)}
+            className="back-drop-pdf"
+          />
+          <CommentsModal
+            user={user}
+            repair={repair}
+            commentShow={commentShow}
+            setCommentShow={setCommentShow}
+          />
+        </>
+      ) : null}
+
       <section className="repair-info-half">
         <div className="process-status">
           {repair.procesoEstado}
-          <MailtoButton repair={repair.numero} />
+          <FontAwesomeIcon
+            icon="envelope"
+            className="comment-icon"
+            onClick={() => setCommentShow(true)}
+          />
         </div>
         <div className="number center">{repair.numero}</div>
         <div className="number-customer center">

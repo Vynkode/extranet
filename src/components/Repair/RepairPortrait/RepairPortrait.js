@@ -6,11 +6,14 @@ import './RepairPortrait.css';
 import BudgetButton from '../../Button/BudgetButton';
 import DownloadPdf from '../../Pdf/downloadPdf';
 import MailtoButton from '../../Button/MailtoButton';
+import ModalPDF from '../../Modals/PDF/ModalPDF';
+import CommentsModal from '../../Modals/Comments/CommentsModal';
 
 const Repair = ({ id, user, repair, handleRepairsBudget }) => {
   const [activeTab, setActiveTab] = useState('resguardo');
   const [pdf, setPdf] = useState(false);
   const [pdfDownload, setPdfDownload] = useState(false);
+  const [commentShow, setCommentShow] = useState(false);
 
   const handleBudgetStatus = () => {
     if (
@@ -51,11 +54,22 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
 
   return (
     <article className="card-portrait">
+      {commentShow ? (
+        <>
+          <div
+            onClick={() => setCommentShow(false)}
+            className="back-drop-pdf"
+          />
+          <CommentsModal
+            user={user}
+            repair={repair}
+            commentShow={commentShow}
+            setCommentShow={setCommentShow}
+          />
+        </>
+      ) : null}
       <section className="repair-info">
-        <div className="process-status">
-          {repair.procesoEstado}
-          <MailtoButton repair={repair.numero} />
-        </div>
+        <div className="process-status">{repair.procesoEstado}</div>
         <div className="repair-info-portrait">
           <div className="repair-info-data">
             <div className="number center">{repair.numero}</div>
@@ -65,6 +79,11 @@ const Repair = ({ id, user, repair, handleRepairsBudget }) => {
             </div>
             <div className="repair-type center">{repair.tipo_reparacion}</div>
             <div className="repair-type center">{repair.fecha_compra}</div>
+            <FontAwesomeIcon
+              icon="envelope"
+              className="comment-icon"
+              onClick={() => setCommentShow(true)}
+            />
             {!pdf ? (
               <FontAwesomeIcon
                 icon="file-pdf"
