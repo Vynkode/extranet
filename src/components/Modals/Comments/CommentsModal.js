@@ -5,8 +5,21 @@ import './CommentsModal.css';
 
 const CommentsModal = ({ user, repair, commentShow, setCommentShow }) => {
   const [comment, setComment] = useState('');
+  const [commentStatus, setCommentStatus] = useState('');
 
-  const sendComment = () => {};
+  const handleComment = async msg => {
+    const response = await fetch(
+      'https://extranet-backend.herokuapp.com/repair/comment',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ numero: repair.numero, mensaje: msg }),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    setCommentStatus(data);
+  };
 
   return (
     <div className="comment-modal-container">
@@ -23,7 +36,12 @@ const CommentsModal = ({ user, repair, commentShow, setCommentShow }) => {
       </div>
       <div className="comment-modal-text">
         <textarea onChange={e => setComment(e.target.value)} />
-        <button className="comment-modal-button">Enviar</button>
+        <button
+          className="comment-modal-button"
+          onClick={() => handleComment(comment)}
+        >
+          Enviar
+        </button>
       </div>
     </div>
   );
