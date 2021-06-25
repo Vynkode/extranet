@@ -17,8 +17,21 @@ const CommentsModal = ({ user, repair, commentShow, setCommentShow }) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     setCommentStatus(data);
+    const divParent = document.querySelector('.comment-modal-text');
+    const divMessage = document.createElement('div');
+    divMessage.className = `${
+      response.status === 201
+        ? 'comment-message-success'
+        : 'comment-message-fail'
+    }`;
+    divMessage.innerText = data;
+    divParent.innerHTML = '';
+    divParent.appendChild(divMessage);
+    setTimeout(() => {
+      setCommentStatus('');
+      setCommentShow(false);
+    }, 1500);
   };
 
   return (

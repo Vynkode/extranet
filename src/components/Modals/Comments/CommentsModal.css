@@ -70,3 +70,16 @@
   box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.8),
     inset -1px -1px 0px 0px rgba(255, 255, 255, 0.4);
 }
+
+.comment-message-success {
+  width: 90%;
+  color: rgb(32, 116, 24);
+  border: 0.25rem solid rgb(32, 116, 24);
+
+}
+
+.comment-message-fail {
+  width: 90%;
+  color: rgba(159, 48, 48, 0.9);
+  border: 0.25rem double rgba(159, 48, 48, 0.9);
+}
