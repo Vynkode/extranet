@@ -81,6 +81,8 @@ const Pdf = ({ user, repair }) => {
             </Text>
             <Text style={pdfStyles.textItem}>{repair.averia}</Text>
           </View>
+        </View>
+        <View style={pdfStyles.section}>
           <View>
             <Text style={[pdfStyles.textItem, pdfStyles.textTitle]}>
               Observaciones
@@ -88,7 +90,7 @@ const Pdf = ({ user, repair }) => {
             <Text style={pdfStyles.textItem}>{repair.observaciones}</Text>
           </View>
         </View>
-        {repair.presupuestar === 'Sí' ? (
+        {repair.presupuestar === 'Sí' && repair.f_presupuesto ? (
           <>
             <View style={pdfStyles.section}>
               <Text style={pdfStyles.sectionTitle}>PRESUPUESTO</Text>
